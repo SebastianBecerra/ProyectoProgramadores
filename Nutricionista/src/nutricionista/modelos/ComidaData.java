@@ -31,7 +31,8 @@ public class ComidaData {
         }
     }
     
-     
+    //metodo que devuelve lista de comidas cuyas calorias son mayores
+    //al parametro indicado
     public List<Comida> obtenerMaterias(Double calorias){
         List<Comida> comidas = new ArrayList<Comida>();
             

@@ -7,15 +7,16 @@ package nutricionista.modelos;
 
 /**
  *
- * @author usuario
+ * @author Sebastian
  */
 public class Comida {
-    
+    //clase alumno con los atributos que representan los campos de la tabla comida
     private int id=-1;
     private String nombre;
     private double calorias;
     private String detalle;
 
+    //Constructor con todos los atributos
     public Comida(int id, String nombre, double calorias, String detalle) {
         this.id= id;
         this.nombre = nombre;
@@ -23,13 +24,18 @@ public class Comida {
         this.detalle = detalle;
     }
 
+    
+    //Constructor con todos los atributos menos el id
     public Comida(double calorias, String detalle) {
         this.calorias = calorias;
         this.detalle = detalle;
     }
 
+    //Constructor vacio
     public Comida() {}
 
+    
+    //inicio de getters y setters para los atributos
     public int getId() {
         return id;
     }
