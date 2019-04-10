@@ -33,7 +33,7 @@ public class ComidaData {
     
     //metodo que devuelve lista de comidas cuyas calorias son menores
     //al parametro indicado
-    public List<Comida> obtenerMaterias(Double calorias){
+    public List<Comida> obtenerComidas(Double calorias){
         List<Comida> comidas = new ArrayList<Comida>();
             
 

@@ -10,10 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author alejo
- */
+
 public class Conexion {
     private String url="jdbc:mysql://localhost/universidad";
     private String usuario="root";
