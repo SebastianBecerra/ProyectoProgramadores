@@ -31,14 +31,14 @@ public class ComidaData {
         }
     }
     
-    //metodo que devuelve lista de comidas cuyas calorias son mayores
+    //metodo que devuelve lista de comidas cuyas calorias son menores
     //al parametro indicado
     public List<Comida> obtenerMaterias(Double calorias){
         List<Comida> comidas = new ArrayList<Comida>();
             
 
         try {
-            String sql = "SELECT * FROM comida WHERE calorias > ?;";
+            String sql = "SELECT * FROM comida WHERE calorias < ?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setDouble(1, calorias);
             ResultSet resultSet = statement.executeQuery();
