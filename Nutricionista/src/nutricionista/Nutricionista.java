@@ -28,7 +28,7 @@ public class Nutricionista {
     PacienteData p = new PacienteData(con);
     //p.guardarPaciente(pedro);
     List <Paciente> paciente = p.obtenerPaciente();
-    paciente.forEach(pacientes -> {System.out.println("Nombre: "+ pacientes.getNombre()+"  Domicilio: "+pacientes.getDomicilio());});
+    paciente.forEach(pacientes -> {System.out.println("Nombre: "+ pacientes.getNombre()+"  Domicilio: "+pacientes.getDomicilio()+" Celular: "+pacientes.getCelular());});
     
     }
     
