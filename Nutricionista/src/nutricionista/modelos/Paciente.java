@@ -15,15 +15,20 @@ public class Paciente {
     private String domicilio;
     private int celular;
     private Dieta dieta;
+    private int id;
 
-    public Paciente(String nombre, String domicilio, int celular, Dieta dieta) {
+    
+    public Paciente(){
+    }
+    
+    public Paciente(String nombre, String domicilio, int celular, int dni) {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.celular = celular;
-        this.dieta = dieta;
+        this.dni = dni;
     }
 
-    public Paciente(int dni, String nombre, String domicilio, int celular, Dieta dieta) {
+    public Paciente(int dni, String nombre, String domicilio, int celular,Dieta dieta) {
         this.dni = dni;
         this.nombre = nombre;
         this.domicilio = domicilio;
@@ -71,5 +76,12 @@ public class Paciente {
         this.dieta = dieta;
     }
      
-     
+     public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 }

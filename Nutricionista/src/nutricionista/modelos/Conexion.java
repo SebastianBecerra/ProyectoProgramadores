@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 
 public class Conexion {
-    private String url="jdbc:mysql://localhost/universidad";
+    private String url="jdbc:mysql://localhost/nutricionista";
     private String usuario="root";
     private String password="";
 
