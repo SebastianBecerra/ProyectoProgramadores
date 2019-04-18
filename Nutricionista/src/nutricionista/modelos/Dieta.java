@@ -12,14 +12,15 @@ import java.sql.Array;
  * @author RealEnvido
  */
 public class Dieta {
+    private int id;
     private Array comidas;
     private Paciente paciente;
     private Date fechaInicial;
     private Date fechaFinal;
-    private int pesoInicial;
-    private int pesoFinal;
+    private float pesoInicial;
+    private float pesoFinal;
 
-    public Dieta(Array comidas, Paciente persona, Date fechaInicial, Date fechaFinal, int pesoInicial, int pesoFinal) {
+    public Dieta(Array comidas, Paciente persona, Date fechaInicial, Date fechaFinal, float pesoInicial, float pesoFinal) {
         this.comidas = comidas;
         this.paciente = persona;
         this.fechaInicial = fechaInicial;
@@ -27,6 +28,22 @@ public class Dieta {
         this.pesoInicial = pesoInicial;
         this.pesoFinal = pesoFinal;
     }
+
+    public Dieta() 
+    {
+        
+    }
+
+    public Dieta(int id, Array comidas, Paciente paciente, Date fechaInicial, Date fechaFinal, float pesoInicial, float pesoFinal) {
+        this.id = id;
+        this.comidas = comidas;
+        this.paciente = paciente;
+        this.fechaInicial = fechaInicial;
+        this.fechaFinal = fechaFinal;
+        this.pesoInicial = pesoInicial;
+        this.pesoFinal = pesoFinal;
+    }
+    
 
     public void setComidas(Array comidas) {
         this.comidas = comidas;
@@ -44,11 +61,11 @@ public class Dieta {
         this.fechaFinal = fechaFinal;
     }
 
-    public void setPesoInicial(int pesoInicial) {
+    public void setPesoInicial(float pesoInicial) {
         this.pesoInicial = pesoInicial;
     }
 
-    public void setPesoFinal(int pesoFinal) {
+    public void setPesoFinal(float pesoFinal) {
         this.pesoFinal = pesoFinal;
     }
 
@@ -68,11 +85,11 @@ public class Dieta {
         return fechaFinal;
     }
 
-    public int getPesoInicial() {
+    public float getPesoInicial() {
         return pesoInicial;
     }
 
-    public int getPesoFinal() {
+    public float getPesoFinal() {
         return pesoFinal;
     }
     
