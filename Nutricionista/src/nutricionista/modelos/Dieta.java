@@ -4,23 +4,22 @@
  * and open the template in the editor.
  */
 package nutricionista.modelos;
-import java.util.List;
 import java.sql.Date;
-import java.sql.Array;
+import java.time.LocalDate;
 /**
  *
  * @author RealEnvido
  */
 public class Dieta {
     private int id;
-    private Array comidas;
+    private Object [] comidas;
     private Paciente paciente;
-    private Date fechaInicial;
-    private Date fechaFinal;
+    private LocalDate fechaInicial;
+    private LocalDate fechaFinal;
     private float pesoInicial;
     private float pesoFinal;
 
-    public Dieta(Array comidas, Paciente persona, Date fechaInicial, Date fechaFinal, float pesoInicial, float pesoFinal) {
+    public Dieta(Object [] comidas, Paciente persona, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
         this.comidas = comidas;
         this.paciente = persona;
         this.fechaInicial = fechaInicial;
@@ -34,7 +33,7 @@ public class Dieta {
         
     }
 
-    public Dieta(int id, Array comidas, Paciente paciente, Date fechaInicial, Date fechaFinal, float pesoInicial, float pesoFinal) {
+    public Dieta(int id, Object [] comidas, Paciente paciente, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
         this.id = id;
         this.comidas = comidas;
         this.paciente = paciente;
@@ -45,7 +44,7 @@ public class Dieta {
     }
     
 
-    public void setComidas(Array comidas) {
+    public void setComidas(Object [] comidas) {
         this.comidas = comidas;
     }
 
@@ -53,11 +52,11 @@ public class Dieta {
         this.paciente = persona;
     }
 
-    public void setFechaInicial(Date fechaInicial) {
+    public void setFechaInicial(LocalDate fechaInicial) {
         this.fechaInicial = fechaInicial;
     }
 
-    public void setFechaFinal(Date fechaFinal) {
+    public void setFechaFinal(LocalDate fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
 
@@ -69,7 +68,7 @@ public class Dieta {
         this.pesoFinal = pesoFinal;
     }
 
-    public Array getComidas() {
+    public Object[] getComidas() {
         return comidas;
     }
 
@@ -77,11 +76,11 @@ public class Dieta {
         return paciente;
     }
 
-    public Date getFechaInicial() {
+    public LocalDate getFechaInicial() {
         return fechaInicial;
     }
 
-    public Date getFechaFinal() {
+    public LocalDate getFechaFinal() {
         return fechaFinal;
     }
 

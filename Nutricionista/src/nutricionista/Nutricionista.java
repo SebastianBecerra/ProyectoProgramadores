@@ -5,12 +5,16 @@
  */
 package nutricionista;
 
-import java.sql.Connection;
+import java.sql.Array;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import nutricionista.modelos.Comida;
 import nutricionista.modelos.ComidaData;
 import nutricionista.modelos.Conexion;
+import nutricionista.modelos.Dieta;
+import nutricionista.modelos.DietaData;
 import nutricionista.modelos.Paciente;
 import nutricionista.modelos.PacienteData;
 
@@ -26,7 +30,7 @@ public class Nutricionista {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
     
     Conexion con = new Conexion();
-    //Paciente pedro = new Paciente("pedro", "barrio cotorra mz 1 cs5", 26648974, 5688779);
+    Paciente pedro = new Paciente("pedro", "barrio cotorra mz 1 cs5", 26648974, 5688779);
     PacienteData p = new PacienteData(con);
     //p.guardarPaciente(pedro);
     List <Paciente> paciente = p.obtenerPaciente();
@@ -36,10 +40,19 @@ public class Nutricionista {
     
     
     ComidaData cd = new ComidaData(con);
-    //Comida asado = new Comida("asado", 800, "tres porciones");
-    //Comida lomoPizza = new Comida("lomoPizza", 1600, "cuatro porciones");
-    //cd.guardarComida(lomoPizza);
-        
+    DietaData dd = new DietaData(con);
+    
+    Comida asado = new Comida("asado", 800, "tres porciones");
+    Comida lomoPizza = new Comida("lomoPizza", 1600, "cuatro porciones");
+    List <Comida> listaComidas = new ArrayList <Comida>();
+    listaComidas.add(asado);
+    listaComidas.add(lomoPizza);
+  //  Comida[] arrayComidas = new Comida[listaComidas.size()];
+   // arrayComidas = listaComidas.toArray(arrayComidas);
+    Object[] arrayComidas = listaComidas.toArray();
+    Dieta Laluna = new Dieta(arrayComidas,pedro,LocalDate.now(),LocalDate.now(),55.5f,70.8f);
+    cd.guardarComida(lomoPizza);
+    dd.guardarDieta(Laluna);
     //List<Comida> lista = cd.obtenerComidas(900.0);
     //lista.forEach( comida ->{System.out.println("nombre: "+ comida.getNombre());} );   
     }

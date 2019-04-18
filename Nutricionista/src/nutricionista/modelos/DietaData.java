@@ -4,17 +4,11 @@
  * and open the template in the editor.
  */
 package nutricionista.modelos;
-import nutricionista.modelos.Comida;
-import nutricionista.modelos.Paciente;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import java.sql.Array;
 /**
  *
@@ -37,10 +31,10 @@ public class DietaData {
 
           
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setArray(1, dieta.getComidas() );
+            ps.setObject(1, dieta.getComidas());
             ps.setString(2, dieta.getPaciente().getNombre());
-            ps.setDate(3, dieta.getFechaInicial());
-            ps.setDate(4, dieta.getFechaFinal());
+            ps.setDate(3,Date.valueOf(dieta.getFechaInicial()));
+            ps.setDate(4,Date.valueOf(dieta.getFechaFinal()));
             ps.setFloat(5, dieta.getPesoInicial());
             ps.setFloat(6, dieta.getPesoFinal());
             
