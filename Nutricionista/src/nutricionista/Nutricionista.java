@@ -8,6 +8,8 @@ package nutricionista;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import nutricionista.modelos.Comida;
+import nutricionista.modelos.ComidaData;
 import nutricionista.modelos.Conexion;
 import nutricionista.modelos.Paciente;
 import nutricionista.modelos.PacienteData;
@@ -30,6 +32,16 @@ public class Nutricionista {
     List <Paciente> paciente = p.obtenerPaciente();
     paciente.forEach(pacientes -> {System.out.println("Nombre: "+ pacientes.getNombre()+"  Domicilio: "+pacientes.getDomicilio()+" Celular: "+pacientes.getCelular());});
     
+    //*PRUEBA DE INGRESAR COMIDA Y HACER LA CONSULTA DE LAS QUE TIENEN MENOS DE UNA CIERTA CANTIDAD DE CALORIAS 
+    
+    
+    ComidaData cd = new ComidaData(con);
+    //Comida asado = new Comida("asado", 800, "tres porciones");
+    //Comida lomoPizza = new Comida("lomoPizza", 1600, "cuatro porciones");
+    //cd.guardarComida(lomoPizza);
+        
+    //List<Comida> lista = cd.obtenerComidas(900.0);
+    //lista.forEach( comida ->{System.out.println("nombre: "+ comida.getNombre());} );   
     }
     
     

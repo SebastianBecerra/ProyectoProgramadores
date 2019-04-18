@@ -26,7 +26,8 @@ public class Comida {
 
     
     //Constructor con todos los atributos menos el id
-    public Comida(double calorias, String detalle) {
+    public Comida(String nombre, double calorias, String detalle) {
+        this.nombre = nombre;
         this.calorias = calorias;
         this.detalle = detalle;
     }
