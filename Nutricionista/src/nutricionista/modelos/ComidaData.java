@@ -144,14 +144,14 @@ public class ComidaData {
             
 
         try {
-            String sql = "SELECT * FROM comida WHERE calorias < ?;";
+            String sql = "SELECT * FROM comida WHERE comida.calorias < ?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setDouble(1, calorias);
             ResultSet resultSet = statement.executeQuery();
             Comida comida;
             while(resultSet.next()){
                 comida = new Comida();
-                comida.setId(resultSet.getInt("idComida"));
+                comida.setId(resultSet.getInt("id"));
                 comida.setNombre(resultSet.getString("nombre"));
                 comida.setCalorias(resultSet.getDouble("calorias"));
                 comidas.add(comida);
@@ -166,6 +166,7 @@ public class ComidaData {
     }
     
     
+      
     }
     
 
