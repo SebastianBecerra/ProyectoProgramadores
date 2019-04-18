@@ -41,8 +41,8 @@ public class DietaData {
             ps.setString(2, dieta.getPaciente().getNombre());
             ps.setDate(3, dieta.getFechaInicial());
             ps.setDate(4, dieta.getFechaFinal());
-            ps.setInt(5, dieta.getPesoInicial());
-            ps.setInt(6, dieta.getPesoFinal());
+            ps.setFloat(5, dieta.getPesoInicial());
+            ps.setFloat(6, dieta.getPesoFinal());
             
             ps.executeUpdate();
          
