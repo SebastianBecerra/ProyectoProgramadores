@@ -6,20 +6,21 @@
 package nutricionista.modelos;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 /**
  *
  * @author RealEnvido
  */
 public class Dieta {
     private int id;
-    private Object [] comidas;
+    private ArrayList<Comida> comidas = new ArrayList<Comida>();
     private Paciente paciente;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
     private float pesoInicial;
     private float pesoFinal;
 
-    public Dieta(Object [] comidas, Paciente persona, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
+    public Dieta(ArrayList<Comida> comidas, Paciente persona, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
         this.comidas = comidas;
         this.paciente = persona;
         this.fechaInicial = fechaInicial;
@@ -33,7 +34,7 @@ public class Dieta {
         
     }
 
-    public Dieta(int id, Object [] comidas, Paciente paciente, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
+    public Dieta(int id, ArrayList<Comida> comidas, Paciente paciente, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
         this.id = id;
         this.comidas = comidas;
         this.paciente = paciente;
@@ -42,9 +43,13 @@ public class Dieta {
         this.pesoInicial = pesoInicial;
         this.pesoFinal = pesoFinal;
     }
+
+    public Dieta(Paciente paciente) {
+       this.paciente = paciente;
+    }
     
 
-    public void setComidas(Object [] comidas) {
+    public void setComidas(ArrayList<Comida> comidas) {
         this.comidas = comidas;
     }
 
@@ -68,7 +73,7 @@ public class Dieta {
         this.pesoFinal = pesoFinal;
     }
 
-    public Object[] getComidas() {
+    public ArrayList<Comida> getComidas() {
         return comidas;
     }
 
@@ -92,5 +97,8 @@ public class Dieta {
         return pesoFinal;
     }
     
+    public void addDieta(Comida p) {   
+     this.comidas.add(p);
+    }
     
 }
