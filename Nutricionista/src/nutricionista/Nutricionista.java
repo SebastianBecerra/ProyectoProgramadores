@@ -39,7 +39,6 @@ public class Nutricionista {
     
     //*PRUEBA DE INGRESAR COMIDA Y HACER LA CONSULTA DE LAS QUE TIENEN MENOS DE UNA CIERTA CANTIDAD DE CALORIAS     
     ComidaData cd = new ComidaData(con);
-    DietaData dd = new DietaData(con); 
     Comida asado = new Comida("asado", 800, "tres porciones");
     Comida lomoPizza = new Comida("lomoPizza", 1600, "cuatro porciones");
     List<Comida> lista = cd.obtenerComidas(900.0);
@@ -49,13 +48,7 @@ public class Nutricionista {
     ArrayList<Comida> listaComidas = new ArrayList <Comida>();
     listaComidas.add(asado);
     listaComidas.add(lomoPizza);
-  //  Comida[] arrayComidas = new Comida[listaComidas.size()];
-   // arrayComidas = listaComidas.toArray(arrayComidas);
-    //Object[] arrayComidas = listaComidas.toArray();
-    //Dieta Laluna = new Dieta(listaComidas,pedro,LocalDate.now(),LocalDate.now(),55.5f,70.8f);
-    //cd.guardarComida(lomoPizza);
-    //dd.guardarDieta(Laluna);
-    
+  
     //listaComidas.forEach(listaComida -> {System.out.println(" "+ listaComidas.getNombre());});
     DietaData dt = new DietaData(con);
     Dieta miDieta = new Dieta(listaComidas,pedro,LocalDate.now(),LocalDate.now(),90,80);
