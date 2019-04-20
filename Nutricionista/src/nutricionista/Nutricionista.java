@@ -9,6 +9,7 @@ import java.sql.Array;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import nutricionista.modelos.Comida;
 import nutricionista.modelos.ComidaData;
@@ -36,25 +37,33 @@ public class Nutricionista {
     List <Paciente> paciente = p.obtenerPaciente();
     paciente.forEach(pacientes -> {System.out.println("Nombre: "+ pacientes.getNombre()+"  Domicilio: "+pacientes.getDomicilio()+" Celular: "+pacientes.getCelular());});
     
-    //*PRUEBA DE INGRESAR COMIDA Y HACER LA CONSULTA DE LAS QUE TIENEN MENOS DE UNA CIERTA CANTIDAD DE CALORIAS 
-    
-    
+    //*PRUEBA DE INGRESAR COMIDA Y HACER LA CONSULTA DE LAS QUE TIENEN MENOS DE UNA CIERTA CANTIDAD DE CALORIAS     
     ComidaData cd = new ComidaData(con);
-    DietaData dd = new DietaData(con);
-    
+    DietaData dd = new DietaData(con); 
     Comida asado = new Comida("asado", 800, "tres porciones");
     Comida lomoPizza = new Comida("lomoPizza", 1600, "cuatro porciones");
-    List <Comida> listaComidas = new ArrayList <Comida>();
+    List<Comida> lista = cd.obtenerComidas(900.0);
+    lista.forEach( comida ->{System.out.println("nombre: "+ comida.getNombre());} );
+    
+    //PRUEBA DIETA
+    ArrayList<Comida> listaComidas = new ArrayList <Comida>();
     listaComidas.add(asado);
     listaComidas.add(lomoPizza);
   //  Comida[] arrayComidas = new Comida[listaComidas.size()];
    // arrayComidas = listaComidas.toArray(arrayComidas);
-    Object[] arrayComidas = listaComidas.toArray();
-    Dieta Laluna = new Dieta(arrayComidas,pedro,LocalDate.now(),LocalDate.now(),55.5f,70.8f);
-    cd.guardarComida(lomoPizza);
-    dd.guardarDieta(Laluna);
-    //List<Comida> lista = cd.obtenerComidas(900.0);
-    //lista.forEach( comida ->{System.out.println("nombre: "+ comida.getNombre());} );   
+    //Object[] arrayComidas = listaComidas.toArray();
+    //Dieta Laluna = new Dieta(listaComidas,pedro,LocalDate.now(),LocalDate.now(),55.5f,70.8f);
+    //cd.guardarComida(lomoPizza);
+    //dd.guardarDieta(Laluna);
+    
+    //listaComidas.forEach(listaComida -> {System.out.println(" "+ listaComidas.getNombre());});
+    DietaData dt = new DietaData(con);
+    Dieta miDieta = new Dieta(listaComidas,pedro,LocalDate.now(),LocalDate.now(),90,80);
+    miDieta.addDieta(asado);
+    miDieta.addDieta(lomoPizza);
+    dt.guardarDieta(miDieta);
+    
+    
     }
     
     
