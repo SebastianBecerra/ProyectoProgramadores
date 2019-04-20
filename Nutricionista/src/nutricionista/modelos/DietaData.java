@@ -48,13 +48,13 @@ public class DietaData {
             ps.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+            System.out.println("Error al insertar una Dieta: " + ex.getMessage());
         }
     }
       public void borrarDieta(String nombrePaciente){
     try {
             
-            String sql = "DELETE FROM dieta WHERE paciente = ?;";
+            String sql = "DELETE FROM dieta WHERE idPaciente = ?;";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, nombrePaciente);
@@ -64,7 +64,7 @@ public class DietaData {
             ps.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+            System.out.println("Error al insertar una Dieta: " + ex.getMessage());
         }     
     
     }
@@ -72,7 +72,7 @@ public class DietaData {
     
         try {
             
-            String sql = "UPDATE cursada SET comidas = ?, paciente = ?, fechaInicial = ?, fechaFinal = ?, pesoInicial = ?, pesoFinal = ? WHERE paciente = ?;";
+            String sql = "UPDATE cursada SET idComida = ?, idPaciente = ?, fechaInicio = ?, fechaFin = ?, pesoInicial = ?, pesoBuscado = ? WHERE paciente = ?;";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setArray(1, comidas);
@@ -90,7 +90,7 @@ public class DietaData {
             ps.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+            System.out.println("Error al insertar una Dieta " + ex.getMessage());
         }
   
     }
