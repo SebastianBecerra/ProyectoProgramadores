@@ -165,7 +165,18 @@ public class ComidaData {
         return comidas;
     }
     
-    
+     public int sumaDeCaloriasComidas (List<Comida> comidasASumar)
+     { 
+         
+         int caloriasTotales = 0;
+        // comidasASumar.forEach( (Comida comidas) ->{caloriasTotales += comidas.getCalorias()});
+         for (Comida comidas : comidasASumar) 
+         {
+             caloriasTotales += comidas.getCalorias();
+         }
+         return caloriasTotales;
+     // comidasASumar.forEach( comida ->{System.out.println"nombre: "+ comida.getNombre();} );
+     }
       
     }
     

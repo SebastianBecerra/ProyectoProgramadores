@@ -13,15 +13,13 @@ import java.util.ArrayList;
  */
 public class Dieta {
     private int id;
-    private ArrayList<Comida> comidas = new ArrayList<Comida>();
     private Paciente paciente;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
     private float pesoInicial;
     private float pesoFinal;
 
-    public Dieta(ArrayList<Comida> comidas, Paciente persona, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
-        this.comidas = comidas;
+    public Dieta(Paciente persona, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
         this.paciente = persona;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
@@ -34,9 +32,8 @@ public class Dieta {
         
     }
 
-    public Dieta(int id, ArrayList<Comida> comidas, Paciente paciente, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
-        this.id = id;
-        this.comidas = comidas;
+    public Dieta(int id, Paciente paciente, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
+        this.id = id;      
         this.paciente = paciente;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
@@ -48,10 +45,6 @@ public class Dieta {
        this.paciente = paciente;
     }
     
-
-    public void setComidas(ArrayList<Comida> comidas) {
-        this.comidas = comidas;
-    }
 
     public void setPaciente(Paciente persona) {
         this.paciente = persona;
@@ -73,9 +66,7 @@ public class Dieta {
         this.pesoFinal = pesoFinal;
     }
 
-    public ArrayList<Comida> getComidas() {
-        return comidas;
-    }
+   
 
     public Paciente getPaciente() {
         return paciente;
@@ -96,9 +87,15 @@ public class Dieta {
     public float getPesoFinal() {
         return pesoFinal;
     }
-    
-    public void addDieta(Comida p) {   
-     this.comidas.add(p);
+
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public int getId() {
+        return id;
+    }
+    
+  
     
 }

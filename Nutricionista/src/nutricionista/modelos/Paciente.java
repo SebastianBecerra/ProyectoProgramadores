@@ -10,12 +10,13 @@ package nutricionista.modelos;
  * @author RealEnvido
  */
 public class Paciente {
+   
+    private int idPaciente;
     private int dni;
     private String nombre;
     private String domicilio;
     private int celular;
-    private Dieta dieta;
-    private int id;
+  
 
     
     public Paciente(){
@@ -28,12 +29,13 @@ public class Paciente {
         this.dni = dni;
     }
 
-    public Paciente(int dni, String nombre, String domicilio, int celular,Dieta dieta) {
+    public Paciente(int id,int dni, String nombre, String domicilio, int celular) {
+        this.idPaciente = id;
         this.dni = dni;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.celular = celular;
-        this.dieta = dieta;
+      
     }
 
     public int getDni() {
@@ -52,9 +54,7 @@ public class Paciente {
         return celular;
     }
 
-    public Dieta getDieta() {
-        return dieta;
-    }
+   
 
     public void setDni(int dni) {
         this.dni = dni;
@@ -72,16 +72,12 @@ public class Paciente {
         this.celular = celular;
     }
 
-    public void setDieta(Dieta dieta) {
-        this.dieta = dieta;
-    }
-     
      public int getId() {
-        return id;
+        return idPaciente;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idPaciente = id;
     }
     
 }

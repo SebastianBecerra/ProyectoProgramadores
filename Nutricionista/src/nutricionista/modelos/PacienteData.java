@@ -102,4 +102,41 @@ public class PacienteData {
         return pacientes;
     } 
     
+   
+   /////////////////////////////////////
+    public Paciente buscarPaciente(int id){
+    Paciente paciente=null;
+    try {
+            
+            String sql = "SELECT * FROM paciente WHERE idPaciente =?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+           
+            
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            
+            while(resultSet.next()){
+                paciente = new Paciente();
+                paciente.setId(resultSet.getInt("idPaciente"));
+                paciente.setDni(resultSet.getInt("dni"));
+                paciente.setNombre(resultSet.getString("nombre"));
+                paciente.setDomicilio(resultSet.getString("domicilio"));
+                paciente.setCelular(resultSet.getInt("celular"));
+
+                
+            }      
+            ps.close();
+            
+            
+            
+            
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar Alumno: " + ex.getMessage());
+        }
+        
+        return paciente;
+    }
+    
 }
