@@ -37,14 +37,14 @@ public class PacienteData {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, paciente.getNombre());
             ps.setString(2, paciente.getDomicilio());
-            ps.setInt(3, paciente.getCelular());
-            ps.setInt(4, paciente.getDni());
+            ps.setString(3, paciente.getCelular());
+            ps.setString(4, paciente.getDni());
             ps.executeUpdate();
             
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
-                paciente.setId(rs.getInt(1));
+                paciente.setIdPaciente(rs.getInt(1));
             } else {
                 System.out.println("No se pudo obtener el id luego de insertar un paciente");
             }
@@ -58,7 +58,7 @@ public class PacienteData {
     public void borrarPaciente(int id){
     try {
             
-            String sql = "DELETE FROM paciente WHERE id =?;";
+            String sql = "DELETE FROM paciente WHERE idPaciente =?;";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
@@ -85,11 +85,11 @@ public class PacienteData {
             Paciente paciente;
             while(resultSet.next()){
                 paciente = new Paciente();
-                paciente.setId(resultSet.getInt("id"));
+                paciente.setIdPaciente(resultSet.getInt("idPaciente"));
                 paciente.setNombre(resultSet.getString("nombre"));
                 paciente.setDomicilio(resultSet.getString("domicilio"));
-                paciente.setCelular(resultSet.getInt("celular"));
-                paciente.setDni(resultSet.getInt("dni"));
+                paciente.setCelular(resultSet.getString("celular"));
+                paciente.setDni(resultSet.getString("dni"));
 
                 pacientes.add(paciente);
             }      
@@ -118,11 +118,11 @@ public class PacienteData {
             
             while(resultSet.next()){
                 paciente = new Paciente();
-                paciente.setId(resultSet.getInt("idPaciente"));
-                paciente.setDni(resultSet.getInt("dni"));
+                paciente.setIdPaciente(resultSet.getInt("idPaciente"));
+                paciente.setDni(resultSet.getString("dni"));
                 paciente.setNombre(resultSet.getString("nombre"));
                 paciente.setDomicilio(resultSet.getString("domicilio"));
-                paciente.setCelular(resultSet.getInt("celular"));
+                paciente.setCelular(resultSet.getString("celular"));
 
                 
             }      
@@ -137,6 +137,62 @@ public class PacienteData {
         }
         
         return paciente;
+    }
+    public Paciente buscarPacienteNombre(String nombre){
+    Paciente paciente=null;
+    try {
+            
+            String sql = "SELECT * FROM paciente WHERE nombre  =?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, nombre);
+           
+            
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            
+            while(resultSet.next()){
+                paciente = new Paciente();
+                paciente.setIdPaciente(resultSet.getInt("idPaciente"));
+                paciente.setDni(resultSet.getString("dni"));
+                paciente.setNombre(resultSet.getString("nombre"));
+                paciente.setDomicilio(resultSet.getString("domicilio"));
+                paciente.setCelular(resultSet.getString("celular"));
+
+                
+            }      
+            ps.close();
+            
+            
+            
+            
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar Alumno: " + ex.getMessage());
+        }
+        
+        return paciente;
+    }
+      public void actualizarPaciente2(Paciente paciente){
+    
+        try {
+            
+            String sql = "UPDATE paciente SET nombre = ?, dni = ? , domicilio = ?, celular = ? WHERE idPaciente = ?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, paciente.getNombre());
+            ps.setString(2, paciente.getDni());
+            ps.setString(3 , paciente.getDomicilio());
+            ps.setString(4 , paciente.getCelular());
+            ps.setInt(5, paciente.getIdPaciente());
+            ps.executeUpdate();
+            
+          
+            ps.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al actualizar Paciente: " + ex.getMessage());
+        }
+    
     }
     
 }

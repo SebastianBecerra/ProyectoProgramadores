@@ -5,6 +5,8 @@
  */
 package nutricionista.modelos;
 
+import java.util.logging.Logger;
+
 /**
  *
  * @author RealEnvido
@@ -12,24 +14,24 @@ package nutricionista.modelos;
 public class Paciente {
    
     private int idPaciente;
-    private int dni;
+    private String dni;
     private String nombre;
     private String domicilio;
-    private int celular;
+    private String  celular;
   
 
     
     public Paciente(){
     }
     
-    public Paciente(String nombre, String domicilio, int celular, int dni) {
+    public Paciente(String nombre, String domicilio, String celular, String dni) {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.celular = celular;
         this.dni = dni;
     }
 
-    public Paciente(int id,int dni, String nombre, String domicilio, int celular) {
+    public Paciente(int id,String dni, String nombre, String domicilio, String celular) {
         this.idPaciente = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -38,7 +40,7 @@ public class Paciente {
       
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
@@ -50,13 +52,13 @@ public class Paciente {
         return domicilio;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
    
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -68,16 +70,19 @@ public class Paciente {
         this.domicilio = domicilio;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
-     public int getId() {
+    public int getIdPaciente() {
         return idPaciente;
     }
+   
 
-    public void setId(int id) {
-        this.idPaciente = id;
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
+
+   
     
 }

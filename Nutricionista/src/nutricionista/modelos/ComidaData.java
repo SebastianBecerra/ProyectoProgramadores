@@ -62,10 +62,10 @@ public class ComidaData {
     }
     
     //metodo que recibe un id de una comida y hace un delete en la base de datos y la borra
-    public void borrarComida(int id){
+    public void borrarComida2(int id){
     try {
             
-            String sql = "DELETE FROM comida WHERE idComida =?;";
+            String sql = "DELETE FROM comida WHERE id =?;";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
@@ -88,7 +88,7 @@ public class ComidaData {
         try {
             
             String sql = "UPDATE comida SET nombre = ?, calorias = ? , "
-                    + "detalle =? WHERE idComida = ?;";
+                    + "detalle =? WHERE id = ?;";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, comida.getNombre());
@@ -101,17 +101,17 @@ public class ComidaData {
             ps.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+            System.out.println("Error al actualizar comida: " + ex.getMessage());
         }
     
     }
     
     //metodo que busca una comida unica a partir de un id
-    public Comida buscarComida(int id){
+    public Comida buscarComida3(int id){
     Comida comida=null;
     try {
             
-            String sql = "SELECT * FROM comida WHERE idComida =?;";
+            String sql = "SELECT * FROM comida WHERE id =?;";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
@@ -121,7 +121,7 @@ public class ComidaData {
             
             while(resultSet.next()){
                 comida = new Comida();
-                comida.setId(resultSet.getInt("idComida"));
+                comida.setId(resultSet.getInt("id"));
                 comida.setNombre(resultSet.getString("nombre"));
                 comida.setCalorias(resultSet.getDouble("calorias"));
                 comida.setDetalle(resultSet.getString("detalle"));
@@ -130,7 +130,7 @@ public class ComidaData {
             ps.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+            System.out.println("Error al insertar una Comida: " + ex.getMessage());
         }
         
         return comida;
@@ -139,7 +139,7 @@ public class ComidaData {
     
     //metodo que devuelve lista de comidas cuyas calorias son menores
     //al parametro indicado
-    public List<Comida> obtenerComidas(Double calorias){
+    public List<Comida> obtenerComidas2(Double calorias){
         List<Comida> comidas = new ArrayList<Comida>();
             
 
@@ -154,6 +154,7 @@ public class ComidaData {
                 comida.setId(resultSet.getInt("id"));
                 comida.setNombre(resultSet.getString("nombre"));
                 comida.setCalorias(resultSet.getDouble("calorias"));
+                comida.setDetalle(resultSet.getString("detalle"));
                 comidas.add(comida);
             }      
             statement.close();
@@ -177,7 +178,33 @@ public class ComidaData {
          return caloriasTotales;
      // comidasASumar.forEach( comida ->{System.out.println"nombre: "+ comida.getNombre();} );
      }
-      
+       public List<Comida> obtenerTodasLasComidas(){
+        List<Comida> comidas = new ArrayList<Comida>();
+            
+
+        try {
+            String sql = "SELECT * FROM comida;";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet resultSet = ps.executeQuery();
+            Comida comida;
+            while(resultSet.next()){
+                comida = new Comida();
+                comida.setId(resultSet.getInt("id"));
+                comida.setNombre(resultSet.getString("nombre"));
+                comida.setCalorias(resultSet.getDouble("calorias"));
+                comida.setDetalle(resultSet.getString("detalle"));
+                
+
+                comidas.add(comida);
+            }      
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+        }
+        
+        
+        return comidas;
+    } 
     }
     
 

@@ -11,7 +11,7 @@ package nutricionista.modelos;
  */
 public class Comida {
     //clase alumno con los atributos que representan los campos de la tabla comida
-    private int id=-1;
+    private int id;
     private String nombre;
     private double calorias;
     private String detalle;

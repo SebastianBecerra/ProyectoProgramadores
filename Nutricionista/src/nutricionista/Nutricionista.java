@@ -30,7 +30,7 @@ public class Nutricionista {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
     
     Conexion con = new Conexion();
-    Paciente pedro = new Paciente("pedro", "barrio cotorra mz 1 cs5", 26648974, 5688779);
+    Paciente pedro = new Paciente("pedro", "barrio cotorra mz 1 cs5", "26648974", "5688779");
     PacienteData p = new PacienteData(con);
     p.guardarPaciente(pedro);
    //List <Paciente> paciente = p.obtenerPaciente();
@@ -40,7 +40,7 @@ public class Nutricionista {
     ComidaData cd = new ComidaData(con);
     Comida asado = new Comida("asado", 800, "tres porciones");
     Comida lomoPizza = new Comida("lomoPizza", 1600, "cuatro porciones");
-    List<Comida> lista = cd.obtenerComidas(900.0);
+    List<Comida> lista = cd.obtenerComidas2(900.0);
     cd.guardarComida(asado); 
    //cd.guardarComida(lomoPizza); 
 
