@@ -224,5 +224,58 @@ public class DietaData {
         
         return dieta;
     }
+    public Dieta buscarDietaIDcondni(String id){
+    Dieta dieta=null;
+    try {
+            
+            String sql = "SELECT dieta.* FROM dieta,paciente WHERE paciente.dni=? && dieta.idPaciente = paciente.idPaciente;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, id);
+           
+            
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            
+            while(resultSet.next()){
+                dieta = new Dieta();
+                dieta.setId(resultSet.getInt("id"));
+               
+            }      
+            ps.close();
     
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar una Comida: " + ex.getMessage());
+        }
+        
+        return dieta;
+    }
+    public Dieta buscarDietaporPaciente (int id){
+    Dieta dieta=null;
+    try {
+            
+            String sql = "SELECT * FROM dieta WHERE idPaciente =?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+           
+            
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            
+            while(resultSet.next()){
+                dieta = new Dieta();
+                dieta.setId(resultSet.getInt("id"));
+                dieta.setPaciente(resultSet.getInt("idPaciente"));
+                dieta.setFechaInicial(resultSet.getDate("fechaInicio").toLocalDate());
+                dieta.setFechaFinal(resultSet.getDate("fechaFin").toLocalDate());
+                dieta.setPesoInicial(resultSet.getFloat("pesoInicial"));
+                dieta.setPesoFinal(resultSet.getFloat("pesoBuscado"));
+            }      
+            ps.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar una Comida: " + ex.getMessage());
+        }
+        
+        return dieta;
+    }
 }

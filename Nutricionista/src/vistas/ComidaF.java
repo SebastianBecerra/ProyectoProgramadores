@@ -10,11 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import nutricionista.modelos.Comida;
 import nutricionista.modelos.ComidaData;
 import nutricionista.modelos.Conexion;
+import nutricionista.modelos.DietaComidaData;
+import nutricionista.modelos.DietaComidaPacienteComida;
+import nutricionista.modelos.DietaData;
 
 /**
  *
@@ -30,7 +34,7 @@ private DefaultTableModel modelo;
         modelo = new DefaultTableModel();
         armarCabezeraTabla();
         borrarFilas();
-        this.getContentPane().setBackground( Color.RED );
+       
     }
 
     /**
@@ -66,6 +70,9 @@ private DefaultTableModel modelo;
         TFcaloriasMenores = new javax.swing.JTextField();
         BbuscarAccion = new javax.swing.JButton();
         Batras = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,9 +100,17 @@ private DefaultTableModel modelo;
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        setClosable(true);
+        setPreferredSize(new java.awt.Dimension(895, 625));
+
         TFnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFnombreActionPerformed(evt);
+            }
+        });
+        TFnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFnombreKeyTyped(evt);
             }
         });
 
@@ -104,29 +119,48 @@ private DefaultTableModel modelo;
                 TFcaloriasActionPerformed(evt);
             }
         });
+        TFcalorias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFcaloriasKeyTyped(evt);
+            }
+        });
 
         TFdetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFdetallesActionPerformed(evt);
             }
         });
+        TFdetalles.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFdetallesKeyTyped(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Nombre");
+        jLabel1.setText("Nombre:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Kcal");
+        jLabel2.setText("Kcal:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Detalles");
+        jLabel3.setText("Detalles:");
 
+        BguardarC.setBackground(java.awt.SystemColor.activeCaption);
+        BguardarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoGuardar.png"))); // NOI18N
         BguardarC.setText("Guardar");
         BguardarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BguardarCActionPerformed(evt);
             }
         });
+        BguardarC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                BguardarCKeyTyped(evt);
+            }
+        });
 
+        Bbuscar.setBackground(java.awt.SystemColor.activeCaption);
+        Bbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bbuscar.setText("Buscar");
         Bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +168,8 @@ private DefaultTableModel modelo;
             }
         });
 
+        Bbuscartodo.setBackground(java.awt.SystemColor.activeCaption);
+        Bbuscartodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bbuscartodo.setText("Buscar Todo");
         Bbuscartodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,13 +177,22 @@ private DefaultTableModel modelo;
             }
         });
 
+        Bborrar.setBackground(new java.awt.Color(251, 79, 79));
+        Bborrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBorrar.png"))); // NOI18N
         Bborrar.setText("Borrar");
         Bborrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BborrarActionPerformed(evt);
             }
         });
+        Bborrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                BborrarKeyTyped(evt);
+            }
+        });
 
+        Bactualizar.setBackground(java.awt.SystemColor.activeCaption);
+        Bactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoActualizar.png"))); // NOI18N
         Bactualizar.setText("Actualizar");
         Bactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,10 +223,17 @@ private DefaultTableModel modelo;
                 TFidActionPerformed(evt);
             }
         });
+        TFid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFidKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("ID");
+        jLabel4.setText("ID:");
 
+        Blimpiar.setBackground(java.awt.SystemColor.activeCaption);
+        Blimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoLimpiar.png"))); // NOI18N
         Blimpiar.setText("Limpiar");
         Blimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +250,8 @@ private DefaultTableModel modelo;
             }
         });
 
+        BbuscarAccion.setBackground(java.awt.SystemColor.activeCaption);
+        BbuscarAccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         BbuscarAccion.setText("BUSCAR");
         BbuscarAccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,119 +259,129 @@ private DefaultTableModel modelo;
             }
         });
 
-        Batras.setText("ATRas");
+        Batras.setBackground(java.awt.Color.white);
+        Batras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoAtras.png"))); // NOI18N
         Batras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BatrasActionPerformed(evt);
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("-comidas-");
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel7.setText("Campo Obligatorio");
+
+        jLabel8.setText("Campo Obligatorio");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
+                .addComponent(Batras, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Bbuscar)
-                                .addGap(1, 1, 1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(48, 48, 48)
-                                        .addComponent(Bbuscartodo)
-                                        .addGap(63, 63, 63)
-                                        .addComponent(Bborrar)
-                                        .addGap(56, 56, 56)
-                                        .addComponent(Bactualizar))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(114, 114, 114)
-                                        .addComponent(BguardarC))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Batras, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(86, 86, 86)
                                 .addComponent(jLabel4)
-                                .addGap(64, 64, 64)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel1))
-                            .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel2))
-                            .addComponent(TFcalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(jLabel3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(TFdetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Blimpiar))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TFcaloriasMenores, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BbuscarAccion)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(90, 90, 90)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(36, 36, 36)
+                                                .addComponent(Bbuscar)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(Bbuscartodo))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(TFnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                                                    .addComponent(TFdetalles, javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(TFcalorias, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel8)
+                                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(2, 2, 2)
+                                                .addComponent(BguardarC)
+                                                .addGap(63, 63, 63)
+                                                .addComponent(Bborrar))
+                                            .addComponent(jLabel5))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(55, 55, 55)
+                                                .addComponent(TFcaloriasMenores, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(35, 35, 35)
+                                                .addComponent(Bactualizar)))
+                                        .addGap(35, 35, 35)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(Blimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(BbuscarAccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Batras))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TFdetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TFcalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Bbuscar)
+                    .addComponent(Bbuscartodo)
                     .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(TFcalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TFdetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BguardarC)
+                    .addComponent(Bborrar)
+                    .addComponent(Bactualizar)
                     .addComponent(Blimpiar))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(BguardarC)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Bbuscartodo)
-                            .addComponent(Bbuscar)
-                            .addComponent(Bborrar)
-                            .addComponent(Bactualizar))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(TFcaloriasMenores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BbuscarAccion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Batras, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(TFcaloriasMenores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BbuscarAccion))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(176, 176, 176))
         );
+
+        getAccessibleContext().setAccessibleParent(jDesktopPane1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -336,20 +400,30 @@ private DefaultTableModel modelo;
 
     private void BguardarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BguardarCActionPerformed
     try {
+        if(TFnombre.getText().length()>0){
         Conexion con = new Conexion();
         ComidaData cd = new ComidaData(con);
         Comida nueva = new Comida();
         nueva.setNombre(TFnombre.getText());
-        nueva.setCalorias(Integer.parseInt(TFcalorias.getText()));
+        nueva.setCalorias(Double.parseDouble(TFcalorias.getText()));
         nueva.setDetalle(TFdetalles.getText());
+     
         cd.guardarComida(nueva);
-    } catch (ClassNotFoundException ex) {
+    }
+    
+    else{
+    getToolkit().beep();
+        JOptionPane.showMessageDialog(rootPane,"Datos Insuficientes Para Guardar Comida");
+    
+    }
+    }
+    catch (ClassNotFoundException ex) {
         Logger.getLogger(ComidaF.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_BguardarCActionPerformed
 
     private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
-    try {
+    try { if(TFid.getText().length()>0){
         borrarFilas();
         Conexion con = new Conexion();
         ComidaData cd = new ComidaData(con);
@@ -361,7 +435,14 @@ private DefaultTableModel modelo;
         TFdetalles.setText(nueva.getDetalle());
         
         modelo.addRow(new Object[]{nueva.getId(),nueva.getNombre(),nueva.getCalorias(), nueva.getDetalle()});
-    } catch (ClassNotFoundException ex) {
+    }
+    else{
+    getToolkit().beep();
+    JOptionPane.showMessageDialog(rootPane, "Ingrese una ID Valida");
+    
+    }
+    }
+    catch (ClassNotFoundException ex) {
         Logger.getLogger(ComidaF.class.getName()).log(Level.SEVERE, null, ex);
     }
     
@@ -387,11 +468,42 @@ private DefaultTableModel modelo;
     }//GEN-LAST:event_BbuscartodoActionPerformed
 
     private void BborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BborrarActionPerformed
-    try {
+    try { if(TFid.getText().length()>0){
+       
+      
         Conexion con = new Conexion();
         ComidaData cd = new ComidaData(con);
-        cd.borrarComida2(Integer.parseInt(TFid.getText()));
-    } catch (ClassNotFoundException ex) {
+        DietaData dd = new DietaData(con);
+        DietaComidaData dcd = new DietaComidaData(con);
+        List<DietaComidaPacienteComida> aux = dcd.buscarDietaComidaPorcomida(Integer.parseInt(TFid.getText()));
+      //  aux = dcd.buscarDietaComidaPorcomida(Integer.parseInt(TFid.getText()));
+        if(aux != null)
+        {
+            for(DietaComidaPacienteComida m:aux)
+            {
+                dcd.borrarDietaComida2(Integer.parseInt(TFid.getText()));
+            }
+            
+          cd.borrarComida2(Integer.parseInt(TFid.getText()));
+             System.out.println("1");
+
+        }
+        else
+        {
+            cd.borrarComida2(Integer.parseInt(TFid.getText()));
+             System.out.println("2");
+
+        }
+       
+       
+       }
+    else{
+    getToolkit().beep();
+    JOptionPane.showMessageDialog(rootPane, "Ingrese Una ID valida");
+    
+    }
+    }
+    catch (ClassNotFoundException ex) {
         Logger.getLogger(ComidaF.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_BborrarActionPerformed
@@ -434,7 +546,7 @@ private DefaultTableModel modelo;
     }//GEN-LAST:event_BlimpiarActionPerformed
 
     private void BbuscarAccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarAccionActionPerformed
-    try {
+    try { if(TFcaloriasMenores.getText().length()>0){
         borrarFilas();
         Conexion con = new Conexion();
         ComidaData cd = new ComidaData(con);
@@ -442,7 +554,16 @@ private DefaultTableModel modelo;
          for(Comida m:lista){
             modelo.addRow(new Object[]{m.getId(),m.getNombre(),m.getCalorias(),m.getDetalle()});
             
-        }   
+        } 
+         
+         
+         
+    }
+    else {
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar Numeros De Calorias");
+                 
+                 }
 
         
     } catch (ClassNotFoundException ex) {
@@ -455,8 +576,69 @@ private DefaultTableModel modelo;
     }//GEN-LAST:event_TFcaloriasMenoresActionPerformed
 
     private void BatrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BatrasActionPerformed
-       
+       this.setVisible(false);
+        this.moveToBack();
     }//GEN-LAST:event_BatrasActionPerformed
+
+    private void TFidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFidKeyTyped
+       if(!Character.isLetter(evt.getKeyChar())){
+          
+      
+      }
+      else{
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
+      
+      }
+    }//GEN-LAST:event_TFidKeyTyped
+
+    private void TFnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFnombreKeyTyped
+       if(!Character.isDigit(evt.getKeyChar())){
+          
+      
+      }
+      else{
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Letras");
+      
+      }
+    }//GEN-LAST:event_TFnombreKeyTyped
+
+    private void TFdetallesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFdetallesKeyTyped
+       if(!Character.isDigit(evt.getKeyChar())){
+          
+      
+      }
+      else{
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Letras");
+      
+      }
+    }//GEN-LAST:event_TFdetallesKeyTyped
+
+    private void TFcaloriasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFcaloriasKeyTyped
+        if(!Character.isLetter(evt.getKeyChar())){
+          
+      
+      }
+      else{
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
+      
+      }
+    }//GEN-LAST:event_TFcaloriasKeyTyped
+
+    private void BborrarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BborrarKeyTyped
+       
+    }//GEN-LAST:event_BborrarKeyTyped
+
+    private void BguardarCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BguardarCKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BguardarCKeyTyped
 
  public void armarCabezeraTabla()
     {
@@ -503,6 +685,9 @@ private DefaultTableModel modelo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

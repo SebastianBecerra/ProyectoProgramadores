@@ -208,8 +208,8 @@ public class ComidaData {
         
         return comidas;
     } 
-         public Comida buscarComidaPorNombre(String nombreComida){
-    Comida comida=null;
+    public Comida buscarComidaPorNombre(String nombreComida){
+       Comida comida=null;
     try {
             
             String sql = "SELECT * FROM comida WHERE nombre =?;";

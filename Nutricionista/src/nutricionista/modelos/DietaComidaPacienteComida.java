@@ -15,6 +15,7 @@ public class DietaComidaPacienteComida {
     private String nombreComida;
     private double calorias;
     private String Detalles;
+    
 
     public int getIdDieta() {
         return idDieta;

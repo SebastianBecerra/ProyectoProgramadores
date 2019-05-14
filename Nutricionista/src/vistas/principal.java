@@ -18,7 +18,9 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Nutricionista");
     }
 
     /**
@@ -34,10 +36,25 @@ public class principal extends javax.swing.JFrame {
         Bpaciente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Bdieta = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
+        iconoNutricion = new javax.swing.JLabel();
+        textoNutricion = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 700));
         setSize(new java.awt.Dimension(800, 600));
+
+        escritorio.setBackground(new java.awt.Color(0, 102, 102));
+        escritorio.setPreferredSize(new java.awt.Dimension(882, 700));
 
         Bpaciente.setText("Paciente");
         Bpaciente.addActionListener(new java.awt.event.ActionListener() {
@@ -60,96 +77,206 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonSalirActionPerformed(evt);
             }
         });
+
+        iconoNutricion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconoNutricion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nutricion-en-equilibrio-bascula-blanca.png"))); // NOI18N
+        iconoNutricion.setFocusable(false);
+
+        textoNutricion.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        textoNutricion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoNutricion.setText("Nutricionista");
 
         escritorio.setLayer(Bpaciente, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(Bdieta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(botonSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(iconoNutricion, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(textoNutricion, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(textoNutricion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(Bpaciente)
-                .addGap(76, 76, 76)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(Bdieta)
-                .addGap(68, 68, 68))
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addGap(166, 166, 166)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addGap(68, 68, 68))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                        .addComponent(Bpaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(138, 138, 138)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(123, 123, 123)
+                        .addComponent(Bdieta, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(193, 193, 193))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(iconoNutricion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jButton1)
-                .addGap(39, 39, 39)
+                .addContainerGap()
+                .addComponent(textoNutricion)
+                .addGap(31, 31, 31)
+                .addComponent(iconoNutricion, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(Bpaciente)
-                    .addComponent(Bdieta))
-                .addContainerGap(168, Short.MAX_VALUE))
+                    .addComponent(Bdieta)
+                    .addComponent(Bpaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addComponent(botonSalir)
+                .addGap(88, 88, 88))
         );
+
+        jMenu1.setText("Archivo");
+
+        jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Paciente");
+
+        jMenuItem2.setText("Formulario Paciente");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Comida");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem3.setText("Formulario Comida");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Dieta");
+
+        jMenuItem4.setText("Formulario Dieta");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu4);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(escritorio)
-                .addContainerGap())
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BdietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BdietaActionPerformed
-       escritorio.removeAll();
+    
        escritorio.repaint();
        dietaF formulario = new dietaF();
-       formulario.setVisible(true);
        escritorio.add(formulario);
+        formulario.setVisible(true);
+        formulario.moveToFront();
+       
     }//GEN-LAST:event_BdietaActionPerformed
 
     private void BpacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BpacienteActionPerformed
-       escritorio.removeAll();
+      
        escritorio.repaint();
        PacienteF formulario = new PacienteF();
-       formulario.setVisible(true);
+      
        escritorio.add(formulario);
+        formulario.setVisible(true);
+       formulario.moveToFront();
     }//GEN-LAST:event_BpacienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       escritorio.removeAll();
+       
        escritorio.repaint();
        ComidaF formulario = new ComidaF();
-       formulario.setVisible(true);
+       
        escritorio.add(formulario);
+       formulario.setVisible(true);
+       formulario.moveToFront();
+       
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       escritorio.removeAll();
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+      System.exit(0);
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        escritorio.repaint();
-       DietaComidaF formulario = new DietaComidaF();
-       formulario.setVisible(true);
+       PacienteF formulario = new PacienteF();
+      
        escritorio.add(formulario);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        formulario.setVisible(true);
+       formulario.moveToFront();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+      
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+       escritorio.repaint();
+       ComidaF formulario = new ComidaF();
+       
+       escritorio.add(formulario);
+       formulario.setVisible(true);
+       formulario.moveToFront();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+       escritorio.repaint();
+       dietaF formulario = new dietaF();
+       escritorio.add(formulario);
+        formulario.setVisible(true);
+        formulario.moveToFront();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,8 +316,19 @@ public class principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bdieta;
     private javax.swing.JButton Bpaciente;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel iconoNutricion;
     private javax.swing.JButton jButton2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JLabel textoNutricion;
     // End of variables declaration//GEN-END:variables
 }

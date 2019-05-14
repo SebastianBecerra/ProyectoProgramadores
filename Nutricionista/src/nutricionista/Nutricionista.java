@@ -49,8 +49,8 @@ public class Nutricionista {
     //PRUEBA DIETA
      
      DietaData dd = new DietaData(con);
-     Dieta laLuna = new Dieta(pedro,LocalDate.now(),LocalDate.now(),90,80);
-     dd.guardarDieta(laLuna);// ANTES SE TIENE QUE INSERTAR UN PACIENTE
+     //Dieta laLuna = new Dieta(pedro,LocalDate.now(),LocalDate.now(),90,80);
+     //dd.guardarDieta(laLuna);// ANTES SE TIENE QUE INSERTAR UN PACIENTE
      
      
      //COMPORTAMIENTO 1 MOSTRAR PACIENTES QUE DEBEN BAJAR MAS DE UNA CANTIDAD DE KILOS DADOS
@@ -60,17 +60,17 @@ public class Nutricionista {
      
     //PRUEBA DIETACOMIDA
     DietaComidaData dcd = new DietaComidaData(con);
-    DietaComida laNueva = new DietaComida(laLuna,asado);
-    DietaComida laNueva2 = new DietaComida(laLuna,lomoPizza);
+    //DietaComida laNueva = new DietaComida(laLuna,asado);
+    //DietaComida laNueva2 = new DietaComida(laLuna,lomoPizza);
 
-    dcd.guardarDietaComida(laNueva);    // ANTES SE TIENE QUE INSERTA UNA DIETA Y UNA COMIDA
+    //dcd.guardarDietaComida(laNueva);    // ANTES SE TIENE QUE INSERTA UNA DIETA Y UNA COMIDA
    //dcd.guardarDietaComida(laNueva2); // ANTES SE TIENE QUE INSERTA UNA DIETA Y UNA COMIDA
     
    //COMPORTAMIENTO 2 Devolver la cantidad de calorias de la dienta de un paciente Especifico
     int caloriasTotales =0;
     List <Comida> listaSumarCalorias;
-    listaSumarCalorias = dd.CantidadCaloriasDieta(34);
-    caloriasTotales = cd.sumaDeCaloriasComidas(listaSumarCalorias);
+    //listaSumarCalorias = dd.CantidadCaloriasDieta(34);
+    //caloriasTotales = cd.sumaDeCaloriasComidas(listaSumarCalorias);
     System.out.println(caloriasTotales);
     
    

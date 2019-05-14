@@ -38,10 +38,8 @@
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="TFnombre" min="-2" pref="76" max="-2" attributes="0"/>
-                                  <Component id="LidDieta" min="-2" pref="38" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="LidDieta" min="-2" pref="38" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -60,19 +58,14 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="TFborrarNombre" min="-2" pref="89" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="BborrarCalorias" min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="TFborrarCalorias" min="-2" pref="56" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="BborrarDetalles" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="TFborrarDetalles" min="-2" pref="74" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="Bborrar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="95" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -85,6 +78,19 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="TFdetalles" min="-2" pref="98" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="TFnombre" min="-2" pref="245" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="95" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -120,9 +126,9 @@
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="TFborrarNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="BborrarCalorias" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="BborrarDetalles" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFborrarCalorias" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFborrarDetalles" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Bborrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TFborrarId" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="62" max="32767" attributes="0"/>
@@ -193,7 +199,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NOMBRE DE PACIENTE:"/>
+        <Property name="text" type="java.lang.String" value="DNI PACIENTE"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -241,6 +247,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JTresutadosDietaComidaMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -261,17 +270,20 @@
     </Component>
     <Component class="javax.swing.JTextField" name="TFborrarNombre">
     </Component>
-    <Component class="javax.swing.JTextField" name="BborrarCalorias">
+    <Component class="javax.swing.JTextField" name="TFborrarCalorias">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BborrarCaloriasActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TFborrarCaloriasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="BborrarDetalles">
+    <Component class="javax.swing.JTextField" name="TFborrarDetalles">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="Bborrar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Borrar Comida"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BborrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TFborrarId">
     </Component>
