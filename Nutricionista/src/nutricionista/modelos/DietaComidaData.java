@@ -56,17 +56,85 @@ public class DietaComidaData {
             System.out.println("Error al insertar una DietaComida " + ex.getMessage());
         }
     }
-    public  List<DietaComidaPacienteComida> buscarDietaComidaPorPaciente6(String nombre){
+    public  List<DietaComidaPacienteComida> buscarDietaComidaPorPaciente7(String nombre){
      
          List<DietaComidaPacienteComida> dietas = new ArrayList<DietaComidaPacienteComida>();
          DietaComidaPacienteComida dieta;
          
     try {
             
-            String sql = "SELECT dietaComida.*,comida.nombre,comida.calorias,comida.detalle from paciente,dieta,dietaComida,comida where paciente.dni = ? && dieta.idPaciente = paciente.idPaciente && dieta.id = dietaComida.idDieta;";
+            String sql = "SELECT dietaComida.*,comida.nombre,comida.calorias,comida.detalle from paciente,dieta,dietacomida,comida where paciente.dni = ? && dieta.idPaciente = paciente.idPaciente && dieta.id = dietaComida.idDieta;";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, nombre);
+           
+            
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            
+            while(resultSet.next()){
+                dieta = new DietaComidaPacienteComida();       
+                dieta.setIdComida(resultSet.getInt("idComida"));
+                dieta.setIdDieta(resultSet.getInt("idDieta"));
+                dieta.setNombreComida(resultSet.getString("nombre"));
+                dieta.setCalorias(resultSet.getDouble("calorias"));
+                dieta.setDetalles(resultSet.getString("detalle"));
+                dietas.add(dieta);
+          
+              
+            }      
+            ps.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar una Comida: " + ex.getMessage());
+        }
+        
+        return dietas;
+    }
+     public void borrarDietaComida2(int id){
+    try {
+            
+            String sql = "DELETE FROM dietacomida WHERE idComida = ?;";
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+                      
+            ps.executeUpdate();
+                        
+            ps.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar una Dieta: " + ex.getMessage());
+        }     
+    
+    }
+       public void borrarDietaComida(int id){
+    try {
+            
+            String sql = "DELETE FROM dietacomida WHERE idDieta = ?;";
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+                      
+            ps.executeUpdate();
+                        
+            ps.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar una Dieta: " + ex.getMessage());
+        }     
+    
+    }
+        public  List<DietaComidaPacienteComida> buscarDietaComidaPorcomida(int nombre){
+     
+         List<DietaComidaPacienteComida> dietas = new ArrayList<DietaComidaPacienteComida>();
+         DietaComidaPacienteComida dieta;
+         
+    try {
+            
+            String sql = "SELECT dietaComida.*,comida.nombre,comida.calorias,comida.detalle from paciente,dieta,dietacomida,comida where dietacomida.idComida = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, nombre);
            
             
             ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select

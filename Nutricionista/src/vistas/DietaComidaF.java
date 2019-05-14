@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import nutricionista.modelos.Comida;
 import nutricionista.modelos.ComidaData;
 import nutricionista.modelos.Conexion;
@@ -72,9 +73,9 @@ private ComidaData cd;
         jLabel2 = new javax.swing.JLabel();
         LidDieta = new javax.swing.JLabel();
         TFborrarNombre = new javax.swing.JTextField();
-        BborrarCalorias = new javax.swing.JTextField();
-        BborrarDetalles = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        TFborrarCalorias = new javax.swing.JTextField();
+        TFborrarDetalles = new javax.swing.JTextField();
+        Bborrar = new javax.swing.JButton();
         TFborrarId = new javax.swing.JTextField();
 
         CBcomidas.setMaximumRowCount(100);
@@ -121,7 +122,7 @@ private ComidaData cd;
             }
         });
 
-        jLabel1.setText("NOMBRE DE PACIENTE:");
+        jLabel1.setText("DNI PACIENTE");
 
         JTresutadosDietaComida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,6 +135,11 @@ private ComidaData cd;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        JTresutadosDietaComida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTresutadosDietaComidaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(JTresutadosDietaComida);
 
         Bbuscar.setText("BUSCAR");
@@ -145,13 +151,18 @@ private ComidaData cd;
 
         jLabel2.setText("ID de Dieta");
 
-        BborrarCalorias.addActionListener(new java.awt.event.ActionListener() {
+        TFborrarCalorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BborrarCaloriasActionPerformed(evt);
+                TFborrarCaloriasActionPerformed(evt);
             }
         });
 
-        jButton1.setText("jButton1");
+        Bborrar.setText("Borrar Comida");
+        Bborrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BborrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,9 +185,8 @@ private ComidaData cd;
                                 .addGap(41, 41, 41)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(LidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -189,16 +199,12 @@ private ComidaData cd;
                         .addGap(18, 18, 18)
                         .addComponent(TFborrarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BborrarCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TFborrarCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BborrarDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TFborrarDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(Bborrar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BsumaCalorias)
@@ -209,6 +215,15 @@ private ComidaData cd;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TFdetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(267, 267, 267))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,9 +253,9 @@ private ComidaData cd;
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TFborrarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BborrarCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BborrarDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(TFborrarCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TFborrarDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Bborrar)
                     .addComponent(TFborrarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,12 +273,13 @@ private ComidaData cd;
     try {
         borrarFilas();
         Conexion con = new Conexion();
+        DietaData dd = new DietaData(con);
         DietaComidaData dcd = new DietaComidaData(con);
         List<DietaComidaPacienteComida> dietas = null;
-        dietas = dcd.buscarDietaComidaPorPaciente6(TFdni.getText());
-      
+        dietas = dcd.buscarDietaComidaPorPaciente7(TFdni.getText());
+        LidDieta.setText(Integer.toString(dd.buscarDietaIDcondni(TFdni.getText()).getId()));
         for(DietaComidaPacienteComida m:dietas){
-            LidDieta.setText(Integer.toString(m.getIdDieta()));
+           
            modelo.addRow(new Object[]{m.getIdDieta(),m.getIdComida(),m.getNombreComida(),m.getCalorias(),m.getDetalles()});
             //System.out.println(m.getNombreComida());
           }  
@@ -299,6 +315,7 @@ private ComidaData cd;
 
     private void BagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BagregarActionPerformed
     try {
+        
         Conexion con = new Conexion();
         DietaComidaData dcd = new DietaComidaData(con);
         ComidaData cc = new ComidaData(con);
@@ -307,13 +324,17 @@ private ComidaData cd;
         Comida comida = new Comida();
         DietaComida dietacomida = new DietaComida();
         
-        dieta = dd.buscarDieta(Integer.parseInt(LidDieta.getText()));
+   
         comida = cd.buscarComidaPorNombre(TFnombre.getText());
-        dietacomida.setIdDieta(dieta.getId());
+        dietacomida.setIdDieta(Integer.parseInt(LidDieta.getText()));
         dietacomida.setIdComida(comida.getId());
+        System.out.println(dieta.getId());
+        System.out.println(comida.getNombre());
+
+
         dcd.guardarDietaComida(dietacomida);
         
-        BbuscarActionPerformed(evt);
+        
         
     } catch (ClassNotFoundException ex) {
         Logger.getLogger(DietaComidaF.class.getName()).log(Level.SEVERE, null, ex);
@@ -341,14 +362,41 @@ private ComidaData cd;
     }
     }//GEN-LAST:event_BsumaCaloriasActionPerformed
 
-    private void BborrarCaloriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BborrarCaloriasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BborrarCaloriasActionPerformed
+    private void TFborrarCaloriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFborrarCaloriasActionPerformed
+     
+    }//GEN-LAST:event_TFborrarCaloriasActionPerformed
+
+    private void JTresutadosDietaComidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTresutadosDietaComidaMouseClicked
+        int index = JTresutadosDietaComida.getSelectedRow();
+        TableModel model = JTresutadosDietaComida.getModel();
+        String value4 = model.getValueAt(index, 1).toString();
+        String value1 = model.getValueAt(index, 2).toString();
+        String value2 = model.getValueAt(index, 3).toString();
+        String value3 = model.getValueAt(index, 4).toString();    
+        
+        TFborrarNombre.setText(value1);
+        TFborrarCalorias.setText(value2);
+        TFborrarDetalles.setText(value3);
+        TFborrarId.setText(value4);
+        
+    }//GEN-LAST:event_JTresutadosDietaComidaMouseClicked
+
+    private void BborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BborrarActionPerformed
+   try {
+        Conexion con = new Conexion();
+        DietaComidaData dd = new DietaComidaData(con);
+        dd.borrarDietaComida2(Integer.parseInt(TFborrarId.getText()));
+         
+        
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(DietaComidaF.class.getName()).log(Level.SEVERE, null, ex);
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_BborrarActionPerformed
      public void armarCabezeraTabla()
     {
         ArrayList<Object> columnas = new ArrayList<Object>();
         columnas.add("idDieta");
-        columnas.add("idPaciente");
+        columnas.add("idComida");
         columnas.add("Comida");
         columnas.add("Calorias");
         columnas.add("Detalles");
@@ -369,13 +417,14 @@ private ComidaData cd;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bagregar;
-    private javax.swing.JTextField BborrarCalorias;
-    private javax.swing.JTextField BborrarDetalles;
+    private javax.swing.JButton Bborrar;
     private javax.swing.JButton Bbuscar;
     private javax.swing.JButton BsumaCalorias;
     private javax.swing.JComboBox<String> CBcomidas;
     private javax.swing.JTable JTresutadosDietaComida;
     private javax.swing.JLabel LidDieta;
+    private javax.swing.JTextField TFborrarCalorias;
+    private javax.swing.JTextField TFborrarDetalles;
     private javax.swing.JTextField TFborrarId;
     private javax.swing.JTextField TFborrarNombre;
     private javax.swing.JTextField TFcalorias;
@@ -383,7 +432,6 @@ private ComidaData cd;
     private javax.swing.JTextField TFdni;
     private javax.swing.JTextField TFnombre;
     private javax.swing.JTextField TFsumaCalorias;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

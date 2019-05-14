@@ -12,6 +12,9 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import nutricionista.modelos.Conexion;
+import nutricionista.modelos.Dieta;
+import nutricionista.modelos.DietaComidaData;
+import nutricionista.modelos.DietaData;
 import nutricionista.modelos.Paciente;
 import nutricionista.modelos.PacienteData;
 
@@ -280,7 +283,24 @@ public class PacienteF extends javax.swing.JInternalFrame {
      try {
          Conexion con = new Conexion();
          PacienteData pd = new PacienteData(con);
-         pd.borrarPaciente(Integer.parseInt(TFid.getText()));
+         DietaData dd = new DietaData(con);
+         DietaComidaData dcd = new DietaComidaData(con);
+         Dieta aux = new Dieta();
+         aux = dd.buscarDietaporPaciente(Integer.parseInt(TFid.getText()));
+         if(aux != null)
+         {
+          dcd.borrarDietaComida(aux.getId());
+          dd.borrarDieta2(aux.getId());
+          pd.borrarPaciente(Integer.parseInt(TFid.getText()));
+         System.out.println("1");
+
+         }
+         else
+         {                                     
+          pd.borrarPaciente(Integer.parseInt(TFid.getText()));
+           System.out.println("2");
+
+         }
          
          
          

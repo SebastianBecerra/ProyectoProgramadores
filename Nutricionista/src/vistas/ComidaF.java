@@ -15,6 +15,9 @@ import javax.swing.table.TableModel;
 import nutricionista.modelos.Comida;
 import nutricionista.modelos.ComidaData;
 import nutricionista.modelos.Conexion;
+import nutricionista.modelos.DietaComidaData;
+import nutricionista.modelos.DietaComidaPacienteComida;
+import nutricionista.modelos.DietaData;
 
 /**
  *
@@ -390,7 +393,27 @@ private DefaultTableModel modelo;
     try {
         Conexion con = new Conexion();
         ComidaData cd = new ComidaData(con);
-        cd.borrarComida2(Integer.parseInt(TFid.getText()));
+        DietaData dd = new DietaData(con);
+        DietaComidaData dcd = new DietaComidaData(con);
+        List<DietaComidaPacienteComida> aux = dcd.buscarDietaComidaPorcomida(Integer.parseInt(TFid.getText()));
+      //  aux = dcd.buscarDietaComidaPorcomida(Integer.parseInt(TFid.getText()));
+        if(aux != null)
+        {
+            for(DietaComidaPacienteComida m:aux)
+            {
+                dcd.borrarDietaComida2(Integer.parseInt(TFid.getText()));
+            }
+            
+          cd.borrarComida2(Integer.parseInt(TFid.getText()));
+             System.out.println("1");
+
+        }
+        else
+        {
+            cd.borrarComida2(Integer.parseInt(TFid.getText()));
+             System.out.println("2");
+
+        }
     } catch (ClassNotFoundException ex) {
         Logger.getLogger(ComidaF.class.getName()).log(Level.SEVERE, null, ex);
     }
