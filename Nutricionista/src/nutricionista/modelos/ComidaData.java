@@ -23,10 +23,13 @@ import java.util.Set;
  */
 public class ComidaData {
     private Connection connection = null;
+    private Conexion con;
 
     public ComidaData(Conexion conexion) {
         try {
+            this.con = conexion;
             connection = conexion.getConexion();
+ 
         } catch (SQLException ex) {
             System.out.println("Error al abrir al obtener la conexion");
         }
@@ -205,6 +208,34 @@ public class ComidaData {
         
         return comidas;
     } 
+         public Comida buscarComidaPorNombre(String nombreComida){
+    Comida comida=null;
+    try {
+            
+            String sql = "SELECT * FROM comida WHERE nombre =?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, nombreComida);
+           
+            
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            
+            while(resultSet.next()){
+                comida = new Comida();
+                comida.setId(resultSet.getInt("id"));
+                comida.setNombre(resultSet.getString("nombre"));
+                comida.setCalorias(resultSet.getDouble("calorias"));
+                comida.setDetalle(resultSet.getString("detalle"));
+                             
+            }      
+            ps.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar una Comida: " + ex.getMessage());
+        }
+        
+        return comida;
+    }
     }
     
 

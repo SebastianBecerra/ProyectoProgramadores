@@ -13,13 +13,13 @@ import java.util.ArrayList;
  */
 public class Dieta {
     private int id;
-    private Paciente paciente;
+    private int paciente;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
     private float pesoInicial;
     private float pesoFinal;
 
-    public Dieta(Paciente persona, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
+    public Dieta(int persona, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
         this.paciente = persona;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
@@ -32,7 +32,7 @@ public class Dieta {
         
     }
 
-    public Dieta(int id, Paciente paciente, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
+    public Dieta(int id, int paciente, LocalDate fechaInicial, LocalDate fechaFinal, float pesoInicial, float pesoFinal) {
         this.id = id;      
         this.paciente = paciente;
         this.fechaInicial = fechaInicial;
@@ -41,12 +41,12 @@ public class Dieta {
         this.pesoFinal = pesoFinal;
     }
 
-    public Dieta(Paciente paciente) {
+    public Dieta(int paciente) {
        this.paciente = paciente;
     }
     
 
-    public void setPaciente(Paciente persona) {
+    public void setPaciente(int persona) {
         this.paciente = persona;
     }
 
@@ -68,7 +68,7 @@ public class Dieta {
 
    
 
-    public Paciente getPaciente() {
+    public int getPaciente() {
         return paciente;
     }
 

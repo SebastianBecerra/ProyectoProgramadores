@@ -9,7 +9,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,7 @@ public class DietaData {
          
           
            
-            ps.setInt(1, dieta.getPaciente().getId());
+            ps.setInt(1, dieta.getPaciente());
             ps.setDate(2, Date.valueOf(dieta.getFechaInicial()));
             ps.setDate(3, Date.valueOf(dieta.getFechaFinal()));
             ps.setFloat(4, dieta.getPesoInicial());
@@ -61,13 +60,13 @@ public class DietaData {
             System.out.println("Error al insertar una Dieta: " + ex.getMessage());
         }
     }
-      public void borrarDieta(String nombrePaciente){
+      public void borrarDieta2(int id){
     try {
             
-            String sql = "DELETE FROM dieta WHERE idPaciente = ?;";
+            String sql = "DELETE FROM dieta WHERE id = ?;";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, nombrePaciente);
+            ps.setInt(1, id);
                       
             ps.executeUpdate();
                         
@@ -78,20 +77,20 @@ public class DietaData {
         }     
     
     }
-       public void actualizarDieta(Array comidas, String paciente, Date fechaInicial, Date fechaFinal,int pesoInicial, int pesoFinal){
+       public void actualizarDieta(Dieta dietaN){
     
         try {
             
-            String sql = "UPDATE cursada SET idPaciente = ?, fechaInicio = ?, fechaFin = ?, pesoInicial = ?, pesoBuscado = ? WHERE paciente = ?;";
+            String sql = "UPDATE dieta SET id = ? ,idPaciente = ?, fechaInicio = ?, fechaFin = ?, pesoInicial = ?, pesoBuscado = ? WHERE dieta.id = ?;";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            
-            ps.setString(2, paciente);
-            ps.setDate(3, fechaInicial);
-            ps.setDate(4, fechaFinal);
-            ps.setInt(5, pesoInicial);
-            ps.setInt(6, pesoFinal);
-            ps.setString(7, paciente);
+            ps.setInt(1, dietaN.getId());
+            ps.setInt(2, dietaN.getPaciente());
+            ps.setDate(3, java.sql.Date.valueOf(dietaN.getFechaInicial()));
+            ps.setDate(4, java.sql.Date.valueOf(dietaN.getFechaFinal()));
+            ps.setFloat(5,dietaN.getPesoInicial());
+            ps.setFloat(6, dietaN.getPesoFinal());
+            ps.setInt(7, dietaN.getId());
            
             
             ps.executeUpdate();
@@ -104,10 +103,10 @@ public class DietaData {
         }
   
     }
-        public List<Dieta> obtenerDietas(){
+        public List<Dieta> obtenerDietas3(){
          List<Dieta> dietas = new ArrayList<Dieta>();
         PacienteData pd = new PacienteData(con);
- 
+        
         try {
             String sql = "SELECT * FROM dieta;";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -116,10 +115,10 @@ public class DietaData {
             while(resultSet.next()){
                 
                 dieta = new Dieta();
-                Paciente p = pd.buscarPaciente(resultSet.getInt("idPaciente"));
-                dieta.setPaciente(p);
+                dieta.setId(resultSet.getInt("id"));
+                dieta.setPaciente(resultSet.getInt("idPaciente"));
                 dieta.setFechaInicial(resultSet.getDate("fechaInicio").toLocalDate());
-                dieta.setFechaInicial(resultSet.getDate("fechaFin").toLocalDate());
+                dieta.setFechaFinal(resultSet.getDate("fechaFin").toLocalDate());
                 dieta.setPesoInicial(resultSet.getFloat("pesoInicial"));
                 dieta.setPesoFinal(resultSet.getFloat("pesoBuscado"));
                
@@ -146,7 +145,12 @@ public class DietaData {
             Paciente paciente;
             while(resultSet.next()){
                 paciente = new Paciente();
-                paciente.setNombre(resultSet.getString("nombre"));  
+                paciente.setIdPaciente(resultSet.getInt("idPaciente"));
+                paciente.setNombre(resultSet.getString("nombre"));
+                paciente.setDni(resultSet.getString("dni"));
+                paciente.setDomicilio(resultSet.getString("direccion"));
+                paciente.setCelular(resultSet.getString("celular"));
+                
                 pacientes.add(paciente);
             }      
             ps.close();
@@ -161,16 +165,16 @@ public class DietaData {
         
         return pacientes;
     }
-           public List<Comida> CantidadCaloriasDieta(int idPacienteIngresado){
+         public List<Comida> CantidadCaloriasDieta2(int idPacienteIngresado){
            List<Comida> comidasDieta = new ArrayList<Comida>();
 
     try {
             
-            String sql = "SELECT comida.calorias FROM paciente, dieta , dietacomida ,comida WHERE paciente.idPaciente = ? && dieta.idPaciente = ? && dieta.id = dietacomida.idDieta && dietacomida.idComida = comida.id";
+            String sql = "SELECT comida.calorias FROM paciente, dieta , dietacomida ,comida WHERE  dieta.id = ? && dietacomida.idComida = comida.id && dietacomida.idDieta = dieta.id";
           
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, idPacienteIngresado);
-            ps.setInt(2, idPacienteIngresado);
+          
             ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
             Comida comida;
             while(resultSet.next()){
@@ -190,4 +194,35 @@ public class DietaData {
         
         return comidasDieta;
     }
+         
+    public Dieta buscarDieta(int id){
+    Dieta dieta=null;
+    try {
+            
+            String sql = "SELECT * FROM dieta WHERE id =?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+           
+            
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            
+            while(resultSet.next()){
+                dieta = new Dieta();
+                dieta.setId(resultSet.getInt("id"));
+                dieta.setPaciente(resultSet.getInt("idPaciente"));
+                dieta.setFechaInicial(resultSet.getDate("fechaInicio").toLocalDate());
+                dieta.setFechaFinal(resultSet.getDate("fechaFin").toLocalDate());
+                dieta.setPesoInicial(resultSet.getFloat("pesoInicial"));
+                dieta.setPesoFinal(resultSet.getFloat("pesoBuscado"));
+            }      
+            ps.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar una Comida: " + ex.getMessage());
+        }
+        
+        return dieta;
+    }
+    
 }

@@ -10,31 +10,35 @@ package nutricionista.modelos;
  * @author RealEnvido
  */
 public class DietaComida {
-    private Dieta idDieta;
-    private Comida idComida;
+    private int idDieta;
+    private int idComida;
 
-    public Dieta getIdDieta() {
+    public int getIdDieta() {
         return idDieta;
     }
 
-    public Comida getIdComida() {
+    public int getIdComida() {
         return idComida;
     }
 
-    public void setIdDieta(Dieta idDieta) {
+    public void setIdDieta(int idDieta) {
         this.idDieta = idDieta;
     }
 
-    public void setIdComida(Comida idComida) {
+    public void setIdComida(int idComida) {
         this.idComida = idComida;
     }
 
     public DietaComida() {
     }
 
-       public DietaComida(Dieta idDieta, Comida idComida) {
+       public DietaComida(int idDieta, int idComida) {
         this.idDieta = idDieta;
         this.idComida = idComida;
+    }
+
+    public void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -5,6 +5,8 @@
  */
 package vistas;
 
+import nutricionista.modelos.DietaComida;
+
 /**
  *
  * @author RealEnvido
@@ -16,6 +18,7 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -30,7 +33,8 @@ public class principal extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         Bpaciente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Bdieta = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(800, 600));
@@ -49,16 +53,24 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Bdieta.setText("Dieta");
+        Bdieta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BdietaActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
         escritorio.setLayer(Bpaciente, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(Bdieta, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -69,18 +81,24 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(Bpaciente)
                 .addGap(76, 76, 76)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(37, 37, 37))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(Bdieta)
+                .addGap(68, 68, 68))
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addGap(166, 166, 166)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
-                .addGap(109, 109, 109)
+                .addGap(47, 47, 47)
+                .addComponent(jButton1)
+                .addGap(39, 39, 39)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(Bpaciente)
-                    .addComponent(jButton3))
+                    .addComponent(Bdieta))
                 .addContainerGap(168, Short.MAX_VALUE))
         );
 
@@ -101,9 +119,13 @@ public class principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void BdietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BdietaActionPerformed
+       escritorio.removeAll();
+       escritorio.repaint();
+       dietaF formulario = new dietaF();
+       formulario.setVisible(true);
+       escritorio.add(formulario);
+    }//GEN-LAST:event_BdietaActionPerformed
 
     private void BpacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BpacienteActionPerformed
        escritorio.removeAll();
@@ -120,6 +142,14 @@ public class principal extends javax.swing.JFrame {
        formulario.setVisible(true);
        escritorio.add(formulario);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       escritorio.removeAll();
+       escritorio.repaint();
+       DietaComidaF formulario = new DietaComidaF();
+       formulario.setVisible(true);
+       escritorio.add(formulario);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,9 +187,10 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bdieta;
     private javax.swing.JButton Bpaciente;
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 }
