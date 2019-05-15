@@ -54,8 +54,8 @@ public class Nutricionista {
      
      
      //COMPORTAMIENTO 1 MOSTRAR PACIENTES QUE DEBEN BAJAR MAS DE UNA CANTIDAD DE KILOS DADOS
-     List <Paciente> paciente = dd.buscarPacientesQueDebenBajar(9);
-     paciente.forEach(pacientes -> {System.out.println("Paciente a Bajar mas de ese peso:"+ pacientes.getNombre());});
+//     List <Paciente> paciente = dd.buscarPacientesQueDebenBajar(9);
+  //   paciente.forEach(pacientes -> {System.out.println("Paciente a Bajar mas de ese peso:"+ pacientes.getNombre());});
 
      
     //PRUEBA DIETACOMIDA

@@ -158,4 +158,38 @@ public class DietaComidaData {
         
         return dietas;
     }
+         public  List<DietaComidaPacienteComida> buscarDietaComidaPorIdDieta(int id){
+     
+         List<DietaComidaPacienteComida> dietas = new ArrayList<DietaComidaPacienteComida>();
+         DietaComidaPacienteComida dieta;
+         
+    try {
+            
+            String sql = "SELECT dietaComida.*,comida.nombre,comida.calorias,comida.detalle from paciente,dieta,dietacomida,comida where dietacomida.idDieta = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+           
+            
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            
+            while(resultSet.next()){
+                dieta = new DietaComidaPacienteComida();       
+                dieta.setIdComida(resultSet.getInt("idComida"));
+                dieta.setIdDieta(resultSet.getInt("idDieta"));
+                dieta.setNombreComida(resultSet.getString("nombre"));
+                dieta.setCalorias(resultSet.getDouble("calorias"));
+                dieta.setDetalles(resultSet.getString("detalle"));
+                dietas.add(dieta);
+          
+              
+            }      
+            ps.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar una Comida: " + ex.getMessage());
+        }
+        
+        return dietas;
+    } 
 }

@@ -132,12 +132,12 @@ public class DietaData {
         
         return dietas;
     }
-    public List<Paciente> buscarPacientesQueDebenBajar(int peso){
+    public List<Paciente> buscarPacientesQueDebenBajar5(int peso){
           List<Paciente> pacientes = new ArrayList<Paciente>();
 
     try {
             
-            String sql = "SELECT paciente.nombre FROM paciente, dieta WHERE dieta.pesoInicial - ? > dieta.pesoBuscado && dieta.idPaciente = paciente.idPaciente";
+            String sql = "SELECT paciente.* FROM paciente, dieta WHERE dieta.pesoInicial - ? > dieta.pesoBuscado && dieta.idPaciente = paciente.idPaciente";
           
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, peso);
@@ -148,7 +148,7 @@ public class DietaData {
                 paciente.setIdPaciente(resultSet.getInt("idPaciente"));
                 paciente.setNombre(resultSet.getString("nombre"));
                 paciente.setDni(resultSet.getString("dni"));
-                paciente.setDomicilio(resultSet.getString("direccion"));
+                paciente.setDomicilio(resultSet.getString("domicilio"));
                 paciente.setCelular(resultSet.getString("celular"));
                 
                 pacientes.add(paciente);
@@ -160,7 +160,7 @@ public class DietaData {
             
     
         } catch (SQLException ex) {
-            System.out.println("Error al buscar Paciente" + ex.getMessage());
+            System.out.println("Error al buscar pacientee" + ex.getMessage());
         }
         
         return pacientes;
