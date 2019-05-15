@@ -39,6 +39,7 @@ public class principal extends javax.swing.JFrame {
         botonSalir = new javax.swing.JButton();
         iconoNutricion = new javax.swing.JLabel();
         textoNutricion = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -92,50 +93,65 @@ public class principal extends javax.swing.JFrame {
         textoNutricion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         textoNutricion.setText("Nutricionista");
 
+        jButton1.setText("Agregar Comidas a la Dieta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         escritorio.setLayer(Bpaciente, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(Bdieta, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(botonSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(iconoNutricion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(textoNutricion, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(textoNutricion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
-                .addContainerGap(225, Short.MAX_VALUE)
-                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(Bpaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonSalir)
                         .addGap(68, 68, 68))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
-                        .addComponent(Bpaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(138, 138, 138)
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(165, 165, 165)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(123, 123, 123)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
                         .addComponent(Bdieta, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(193, 193, 193))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                        .addGap(189, 189, 189))))
+            .addGroup(escritorioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(iconoNutricion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(iconoNutricion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(textoNutricion)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(iconoNutricion, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(Bdieta)
                     .addComponent(Bpaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(70, 70, 70)
-                .addComponent(botonSalir)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(botonSalir))
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton1)))
                 .addGap(88, 88, 88))
         );
 
@@ -278,6 +294,13 @@ public class principal extends javax.swing.JFrame {
         formulario.moveToFront();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       escritorio.repaint();
+       DietaComidaF formulario = new DietaComidaF();
+       escritorio.add(formulario);
+        formulario.setVisible(true);
+        formulario.moveToFront();    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,6 +342,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton botonSalir;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel iconoNutricion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

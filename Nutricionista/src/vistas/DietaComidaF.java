@@ -78,6 +78,8 @@ private ComidaData cd;
         Bborrar = new javax.swing.JButton();
         TFborrarId = new javax.swing.JTextField();
 
+        setClosable(true);
+
         CBcomidas.setMaximumRowCount(100);
         CBcomidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +259,7 @@ private ComidaData cd;
                     .addComponent(TFborrarDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Bborrar)
                     .addComponent(TFborrarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -276,7 +278,7 @@ private ComidaData cd;
         DietaData dd = new DietaData(con);
         DietaComidaData dcd = new DietaComidaData(con);
         List<DietaComidaPacienteComida> dietas = null;
-        dietas = dcd.buscarDietaComidaPorPaciente7(TFdni.getText());
+        dietas = dcd.buscarDietaComidaPorPaciente8(TFdni.getText());
         LidDieta.setText(Integer.toString(dd.buscarDietaIDcondni(TFdni.getText()).getId()));
         for(DietaComidaPacienteComida m:dietas){
            
@@ -352,7 +354,7 @@ private ComidaData cd;
         ComidaData cd = new ComidaData(con);
         List <Comida> listaSumarCalorias;
         int caloriasTotales = 0;
-        listaSumarCalorias = dd.CantidadCaloriasDieta2(Integer.parseInt((LidDieta.getText())));
+        listaSumarCalorias = dd.CantidadCaloriasDieta4(Integer.parseInt((LidDieta.getText())));
         caloriasTotales = cd.sumaDeCaloriasComidas(listaSumarCalorias);
         TFsumaCalorias.setText(Integer.toString(caloriasTotales));
        

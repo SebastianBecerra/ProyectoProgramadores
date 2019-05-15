@@ -56,21 +56,21 @@ public class DietaComidaData {
             System.out.println("Error al insertar una DietaComida " + ex.getMessage());
         }
     }
-    public  List<DietaComidaPacienteComida> buscarDietaComidaPorPaciente7(String nombre){
+    public  List<DietaComidaPacienteComida> buscarDietaComidaPorPaciente8(String dni){
      
          List<DietaComidaPacienteComida> dietas = new ArrayList<DietaComidaPacienteComida>();
          DietaComidaPacienteComida dieta;
          
     try {
             
-            String sql = "SELECT dietaComida.*,comida.nombre,comida.calorias,comida.detalle from paciente,dieta,dietacomida,comida where paciente.dni = ? && dieta.idPaciente = paciente.idPaciente && dieta.id = dietaComida.idDieta;";
+            String sql = "SELECT dietaComida.*,comida.nombre,comida.calorias,comida.detalle from paciente,dieta,dietacomida,comida where paciente.dni = ? && dieta.idPaciente = paciente.idPaciente && dieta.id = dietaComida.idDieta && comida.id = dietacomida.idComida;";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, nombre);
+            ps.setString(1, dni);
            
             
             ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
-            
+           
             while(resultSet.next()){
                 dieta = new DietaComidaPacienteComida();       
                 dieta.setIdComida(resultSet.getInt("idComida"));

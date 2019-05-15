@@ -165,12 +165,12 @@ public class DietaData {
         
         return pacientes;
     }
-         public List<Comida> CantidadCaloriasDieta2(int idPacienteIngresado){
+         public List<Comida> CantidadCaloriasDieta4(int idPacienteIngresado){
            List<Comida> comidasDieta = new ArrayList<Comida>();
 
     try {
             
-            String sql = "SELECT comida.calorias FROM paciente, dieta , dietacomida ,comida WHERE  dieta.id = ? && dietacomida.idComida = comida.id && dietacomida.idDieta = dieta.id";
+            String sql = "SELECT comida.calorias FROM dietacomida ,comida WHERE dietacomida.idComida = comida.id && dietacomida.idDieta = ?";
           
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, idPacienteIngresado);
