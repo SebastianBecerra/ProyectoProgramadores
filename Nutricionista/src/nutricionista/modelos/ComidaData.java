@@ -162,7 +162,7 @@ public class ComidaData {
             }      
             statement.close();
         } catch (SQLException ex) {
-            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+            System.out.println("Error al obtener comida: " + ex.getMessage());
         }
         
         

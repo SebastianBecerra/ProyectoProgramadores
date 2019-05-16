@@ -32,16 +32,18 @@ public class Nutricionista {
     Conexion con = new Conexion();
     Paciente pedro = new Paciente("pedro", "barrio cotorra mz 1 cs5", "26648974", "5688779");
     PacienteData p = new PacienteData(con);
-    p.guardarPaciente(pedro);
+    //p.buscarPaciente(1);
+    
+    System.out.println(p.buscarPaciente(1));
    //List <Paciente> paciente = p.obtenerPaciente();
    //paciente.forEach(pacientes -> {System.out.println("Nombre: "+ pacientes.getNombre()+"  Domicilio: "+pacientes.getDomicilio()+" Celular: "+pacientes.getCelular());});
     
     //*PRUEBA DE INGRESAR COMIDA Y HACER LA CONSULTA DE LAS QUE TIENEN MENOS DE UNA CIERTA CANTIDAD DE CALORIAS     
-    ComidaData cd = new ComidaData(con);
-    Comida asado = new Comida("asado", 800, "tres porciones");
-    Comida lomoPizza = new Comida("lomoPizza", 1600, "cuatro porciones");
-    List<Comida> lista = cd.obtenerComidas2(900.0);
-    cd.guardarComida(asado); 
+    //ComidaData cd = new ComidaData(con);
+   // Comida asado = new Comida("asado", 800, "tres porciones");
+    //Comida lomoPizza = new Comida("lomoPizza", 1600, "cuatro porciones");
+    //List<Comida> lista = cd.obtenerComidas2(900.0);
+    //cd.guardarComida(asado); 
    //cd.guardarComida(lomoPizza); 
 
      
@@ -71,7 +73,7 @@ public class Nutricionista {
     List <Comida> listaSumarCalorias;
     //listaSumarCalorias = dd.CantidadCaloriasDieta(34);
     //caloriasTotales = cd.sumaDeCaloriasComidas(listaSumarCalorias);
-    System.out.println(caloriasTotales);
+    //System.out.println(caloriasTotales);
     
    
     }

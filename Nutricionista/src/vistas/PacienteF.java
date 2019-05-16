@@ -397,21 +397,29 @@ public class PacienteF extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BactualizarActionPerformed
 
     private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
-        try { if(TFid.getText().length()>0){
+        try { if(TFid.getText().length()>0){//si en la caja de texto contiene un digito, realizada lo siquiente
             borrarFilas();
             Conexion con = new Conexion();
             PacienteData pd = new PacienteData(con);
             Paciente nuevo = new Paciente();
-            nuevo = pd.buscarPaciente(Integer.parseInt(TFid.getText()));
+            if(pd.buscarPaciente(Integer.parseInt(TFid.getText()))== null){ /* otra exepcion, si el metodo buscar paciente retorna
+                                                                                   un paciente vacio (null) lanza la siguiente exepcion*/
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se encontro Paciente Con ese ID");
+            }
+            else{
+              nuevo = pd.buscarPaciente(Integer.parseInt(TFid.getText())); /* si el buscar paciente no retorna un paciente vacio realizara
+                                                                            la siguiente operacion  */
+            
             TFnombre.setText(nuevo.getNombre());
             TFdni.setText(nuevo.getDni());
             TFdireccion.setText(nuevo.getDomicilio());
             TFcelular.setText(nuevo.getCelular());        
             modelo.addRow(new Object[]{nuevo.getIdPaciente() ,nuevo.getNombre(),nuevo.getDni(), nuevo.getDomicilio(),nuevo.getCelular()});
     
-            
+            }
         }
-        else{
+        else{ // si la caja de texto no tiene un digito lanzara la siguiente exprecion 
         getToolkit().beep();
         JOptionPane.showMessageDialog(rootPane, "Ingrese Una ID Para Buscar");
         
@@ -446,7 +454,9 @@ public class PacienteF extends javax.swing.JInternalFrame {
     }
     private void BguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BguardarActionPerformed
         try {
-            if(TFnombre.getText().length()>4 && TFdni.getText().length()>7){
+            if(TFnombre.getText().length()>4 && TFdni.getText().length()>7){/* si la caja de texto nombre tiene mas 4 letras y la caja de dni tiene mas
+                                                                             de 7 digitos entonces se podra guardar un paciente, con esto
+                                                                             estoy obligando a que el nutricionista almenos tenga el nombre y el DNI*/
             Conexion con = new Conexion();
             PacienteData pd = new PacienteData(con);
             Paciente nuevo = new Paciente();
@@ -457,7 +467,7 @@ public class PacienteF extends javax.swing.JInternalFrame {
             pd.guardarPaciente(nuevo);
             TFid.setText(String.valueOf(nuevo.getIdPaciente()));
             }
-            else{
+            else{ // si no se cumple lanzara la guiente exepcicion 
             getToolkit().beep();
             JOptionPane.showMessageDialog(rootPane, "Datos Insuficientes para Guardar un Paciente. Ingrese Nombre y DNI");
             
@@ -510,66 +520,60 @@ public class PacienteF extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btAtrasActionPerformed
 
     private void TFidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFidKeyTyped
-      if(!Character.isLetter(evt.getKeyChar())){
+      if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+                                                       exepcion*/
           
-      
-      }
-      else{
       getToolkit().beep();
       evt.consume();
           JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
+      }
+      else{//caso contrario no hace nada 
+      
       
       }
     }//GEN-LAST:event_TFidKeyTyped
 
     private void TFnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFnombreKeyTyped
-      if(!Character.isDigit(evt.getKeyChar())){
+      if(Character.isDigit(evt.getKeyChar())){ //si en el campo de texto nombre se ingresaa un numero lanza la siguiente exepcion
           
-      
-      }
-      else{
       getToolkit().beep();
       evt.consume();
           JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Letras");
+      
+      }
+      else{ // caso contrario no hace nada
       
       }
     }//GEN-LAST:event_TFnombreKeyTyped
 
     private void TFdniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFdniKeyTyped
-     if(!Character.isLetter(evt.getKeyChar())){
+    if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+                                                       exepcion*/
           
-      
-      }
-      else{
       getToolkit().beep();
       evt.consume();
           JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
+      }
+      else{//caso contrario no hace nada 
+      
       
       }
     }//GEN-LAST:event_TFdniKeyTyped
 
     private void TFdireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFdireccionKeyTyped
-      if(!Character.isDigit(evt.getKeyChar())){
-          
       
-      }
-      else{
-      getToolkit().beep();
-      evt.consume();
-          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Letras");
-      
-      }
     }//GEN-LAST:event_TFdireccionKeyTyped
 
     private void TFcelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFcelularKeyTyped
-       if(!Character.isLetter(evt.getKeyChar())){
+      if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+                                                       exepcion*/
           
-      
-      }
-      else{
       getToolkit().beep();
       evt.consume();
           JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
+      }
+      else{//caso contrario no hace nada 
+      
       
       }
     }//GEN-LAST:event_TFcelularKeyTyped

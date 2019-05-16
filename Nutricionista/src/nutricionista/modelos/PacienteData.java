@@ -105,7 +105,8 @@ public class PacienteData {
    
    /////////////////////////////////////
     public Paciente buscarPaciente(int id){
-    Paciente paciente=null;
+    Paciente paciente= null;
+    
     try {
             
             String sql = "SELECT * FROM paciente WHERE idPaciente =?;";
@@ -114,9 +115,12 @@ public class PacienteData {
             ps.setInt(1, id);
            
             
-            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select  
+            
+            
             
             while(resultSet.next()){
+                
                 paciente = new Paciente();
                 paciente.setIdPaciente(resultSet.getInt("idPaciente"));
                 paciente.setDni(resultSet.getString("dni"));
@@ -133,7 +137,7 @@ public class PacienteData {
             
     
         } catch (SQLException ex) {
-            System.out.println("Error al buscar Alumno: " + ex.getMessage());
+            System.out.println("Error al buscar Paciente: " + ex.getMessage());
         }
         
         return paciente;
@@ -167,7 +171,7 @@ public class PacienteData {
             
     
         } catch (SQLException ex) {
-            System.out.println("Error al buscar Alumno: " + ex.getMessage());
+            System.out.println("Error al buscar alumno: " + ex.getMessage());
         }
         
         return paciente;
@@ -193,6 +197,40 @@ public class PacienteData {
             System.out.println("Error al actualizar Paciente: " + ex.getMessage());
         }
     
+    }
+      public Paciente buscarPacienteDNI(String dni){
+    Paciente paciente=null;
+    try {
+            
+            String sql = "SELECT * FROM paciente WHERE dni  =?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, dni);
+           
+            
+            ResultSet resultSet=ps.executeQuery(); //hace executeQuery porque estamos haciendo un Select
+            
+            while(resultSet.next()){
+                paciente = new Paciente();
+                paciente.setIdPaciente(resultSet.getInt("idPaciente"));
+                paciente.setDni(resultSet.getString("dni"));
+                paciente.setNombre(resultSet.getString("nombre"));
+                paciente.setDomicilio(resultSet.getString("domicilio"));
+                paciente.setCelular(resultSet.getString("celular"));
+
+                
+            }      
+            ps.close();
+            
+            
+            
+            
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar alumno: " + ex.getMessage());
+        }
+        
+        return paciente;
     }
     
 }

@@ -249,6 +249,11 @@ private DefaultTableModel modelo;
                 TFcaloriasMenoresActionPerformed(evt);
             }
         });
+        TFcaloriasMenores.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFcaloriasMenoresKeyTyped(evt);
+            }
+        });
 
         BbuscarAccion.setBackground(java.awt.SystemColor.activeCaption);
         BbuscarAccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
@@ -423,11 +428,17 @@ private DefaultTableModel modelo;
     }//GEN-LAST:event_BguardarCActionPerformed
 
     private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
-    try { if(TFid.getText().length()>0){
+    try { if(TFid.getText().length()>0){ // si la caja de id contien un digito realizara la siguien opracion
         borrarFilas();
         Conexion con = new Conexion();
         ComidaData cd = new ComidaData(con);
         Comida nueva = new Comida();
+        if(cd.buscarComida3(Integer.parseInt(TFid.getText()))==null)//si el metodo buscar  comida retorna algo vacio lanzara la siguiente exepcion
+        {
+        getToolkit().beep();
+        JOptionPane.showMessageDialog(rootPane, "No se Encontro Comida Con esa ID");
+        }
+        else{ // si el metodo guardar comida no esta vacio realizara la siguiente la siguiente operacion
         nueva = cd.buscarComida3(Integer.parseInt(TFid.getText()));
         
         TFnombre.setText(nueva.getNombre());
@@ -435,8 +446,9 @@ private DefaultTableModel modelo;
         TFdetalles.setText(nueva.getDetalle());
         
         modelo.addRow(new Object[]{nueva.getId(),nueva.getNombre(),nueva.getCalorias(), nueva.getDetalle()});
+        }
     }
-    else{
+    else{ // si el campo de ID no tiene digito lanzara la siguiente exepcion 
     getToolkit().beep();
     JOptionPane.showMessageDialog(rootPane, "Ingrese una ID Valida");
     
@@ -581,53 +593,47 @@ private DefaultTableModel modelo;
     }//GEN-LAST:event_BatrasActionPerformed
 
     private void TFidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFidKeyTyped
-       if(!Character.isLetter(evt.getKeyChar())){
+       if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+                                                       exepcion*/
           
-      
-      }
-      else{
       getToolkit().beep();
       evt.consume();
           JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
+      }
+      else{//caso contrario no hace nada 
+      
       
       }
     }//GEN-LAST:event_TFidKeyTyped
 
     private void TFnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFnombreKeyTyped
-       if(!Character.isDigit(evt.getKeyChar())){
+      if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+                                                       exepcion*/
           
-      
-      }
-      else{
       getToolkit().beep();
       evt.consume();
-          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Letras");
+          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
+      }
+      else{//caso contrario no hace nada 
+      
       
       }
     }//GEN-LAST:event_TFnombreKeyTyped
 
     private void TFdetallesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFdetallesKeyTyped
-       if(!Character.isDigit(evt.getKeyChar())){
-          
-      
-      }
-      else{
-      getToolkit().beep();
-      evt.consume();
-          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Letras");
-      
-      }
+       
     }//GEN-LAST:event_TFdetallesKeyTyped
 
     private void TFcaloriasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFcaloriasKeyTyped
-        if(!Character.isLetter(evt.getKeyChar())){
+       if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+                                                       exepcion*/
           
-      
-      }
-      else{
       getToolkit().beep();
       evt.consume();
           JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
+      }
+      else{//caso contrario no hace nada 
+      
       
       }
     }//GEN-LAST:event_TFcaloriasKeyTyped
@@ -639,6 +645,20 @@ private DefaultTableModel modelo;
     private void BguardarCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BguardarCKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_BguardarCKeyTyped
+
+    private void TFcaloriasMenoresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFcaloriasMenoresKeyTyped
+       if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+                                                       exepcion*/
+          
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
+      }
+      else{//caso contrario no hace nada 
+      
+      
+      }
+    }//GEN-LAST:event_TFcaloriasMenoresKeyTyped
 
  public void armarCabezeraTabla()
     {
