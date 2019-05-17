@@ -142,7 +142,7 @@ public class PacienteData {
         
         return paciente;
     }
-    public Paciente buscarPacienteNombre(String nombre){
+    public Paciente buscarPacienteNombre(String nombre){ 
     Paciente paciente=null;
     try {
             
