@@ -7,6 +7,7 @@ package nutricionista;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import nutricionista.modelos.Comida;
 import nutricionista.modelos.ComidaData;
@@ -74,9 +75,13 @@ public class Nutricionista {
     //listaSumarCalorias = dd.CantidadCaloriasDieta(34);
     //caloriasTotales = cd.sumaDeCaloriasComidas(listaSumarCalorias);
     //System.out.println(caloriasTotales);
+    String sDate = "17/05/2019";
+   LocalDate localDate1 = LocalDate.parse(sDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    System.out.println(sDate);
     
-   
+    
     }
+    
     
     
 }

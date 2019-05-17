@@ -6,6 +6,8 @@
 package vistas;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -99,8 +101,11 @@ public class dietaF extends javax.swing.JInternalFrame {
         JTresultadosPaciente = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         CBid = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setClosable(true);
+        setPreferredSize(new java.awt.Dimension(895, 625));
 
         TFidDieta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +146,6 @@ public class dietaF extends javax.swing.JInternalFrame {
             }
         });
 
-        TFpesoInicial.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TFpesoInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFpesoInicialActionPerformed(evt);
@@ -167,6 +171,7 @@ public class dietaF extends javax.swing.JInternalFrame {
             }
         });
 
+        Bactualizar.setBackground(java.awt.SystemColor.activeCaption);
         Bactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoActualizar.png"))); // NOI18N
         Bactualizar.setText("Actualizar");
         Bactualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +180,7 @@ public class dietaF extends javax.swing.JInternalFrame {
             }
         });
 
+        Bborrar.setBackground(java.awt.SystemColor.activeCaption);
         Bborrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBorrar.png"))); // NOI18N
         Bborrar.setText("Borrar");
         Bborrar.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +189,7 @@ public class dietaF extends javax.swing.JInternalFrame {
             }
         });
 
+        Bguardar.setBackground(java.awt.SystemColor.activeCaption);
         Bguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoGuardar.png"))); // NOI18N
         Bguardar.setText("Guardar");
         Bguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -217,16 +224,16 @@ public class dietaF extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(JTresultadosDieta);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("idDieta");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("ID Dieta");
 
         jLabel2.setToolTipText("");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Fecha Inicial");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("FechaFinal");
+        jLabel4.setText("Fecha Final");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Peso Inicial");
@@ -234,9 +241,10 @@ public class dietaF extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Peso Buscado");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel7.setText("idPaciente");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setText("ID Paciente:");
 
+        Blimpiar.setBackground(java.awt.SystemColor.activeCaption);
         Blimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoLimpiar.png"))); // NOI18N
         Blimpiar.setText("Limpiar");
         Blimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -245,6 +253,7 @@ public class dietaF extends javax.swing.JInternalFrame {
             }
         });
 
+        Batras.setBackground(java.awt.SystemColor.window);
         Batras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoAtras.png"))); // NOI18N
         Batras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,6 +275,7 @@ public class dietaF extends javax.swing.JInternalFrame {
             }
         });
 
+        Bcomportamiento.setBackground(java.awt.SystemColor.activeCaption);
         Bcomportamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bcomportamiento.setText("BUSCAR");
         Bcomportamiento.addActionListener(new java.awt.event.ActionListener() {
@@ -277,6 +287,7 @@ public class dietaF extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
         jLabel9.setText("-Dieta-");
 
+        JTresultadosPaciente.setBackground(java.awt.SystemColor.inactiveCaption);
         JTresultadosPaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -304,6 +315,8 @@ public class dietaF extends javax.swing.JInternalFrame {
             JTresultadosPaciente.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        jSeparator1.setBackground(java.awt.SystemColor.activeCaptionText);
+        jSeparator1.setForeground(java.awt.SystemColor.activeCaptionText);
         jSeparator1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
 
         CBid.addActionListener(new java.awt.event.ActionListener() {
@@ -312,83 +325,93 @@ public class dietaF extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel10.setText("ej: DD/MM/YYYY");
+
+        jLabel11.setText("ej: DD/MM/YYYY");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(Batras)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Bcomportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(48, 48, 48)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(TFcomportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Bguardar)
-                                    .addGap(384, 384, 384)
-                                    .addComponent(Blimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(TFfechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(9, 9, 9)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(34, 34, 34)
-                                            .addComponent(Bborrar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(4, 4, 4)
-                                            .addComponent(jLabel4)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(TFfechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(24, 24, 24)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(TFpesoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(Bactualizar)))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(19, 19, 19)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(TFpesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(CBid, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(TFidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(40, 40, 40)
-                                    .addComponent(Bbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(40, 40, 40)
-                                    .addComponent(BbuscarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(jLabel9)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(Batras, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(TFcomportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Bcomportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(CBid, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(294, 294, 294)
+                                        .addComponent(jLabel2))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel7)
+                                                        .addComponent(jLabel1))
+                                                    .addGap(12, 12, 12)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(TFidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(Bguardar)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addGap(82, 82, 82)
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(Bbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(BbuscarTodo)))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(Bborrar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(36, 36, 36)))))
+                                            .addGap(11, 11, 11)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(23, 23, 23)
+                                                    .addComponent(Bactualizar)
+                                                    .addGap(60, 60, 60)
+                                                    .addComponent(Blimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addComponent(jLabel3)
+                                                            .addGap(31, 31, 31)
+                                                            .addComponent(TFfechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jLabel4)
+                                                                .addComponent(jLabel5)
+                                                                .addComponent(jLabel6))
+                                                            .addGap(27, 27, 27)
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(TFpesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(TFfechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(TFpesoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addGap(18, 18, 18)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel10)
+                                                        .addComponent(jLabel11)))))
+                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(311, 311, 311)
+                                .addComponent(jLabel9)))))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,44 +424,51 @@ public class dietaF extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Bbuscar)
-                    .addComponent(BbuscarTodo)
                     .addComponent(CBid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(TFidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(TFfechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BbuscarTodo)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(TFfechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(TFpesoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(TFidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Bbuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(TFpesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bguardar)
                     .addComponent(Bborrar)
                     .addComponent(Bactualizar)
                     .addComponent(Blimpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(TFcomportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Bcomportamiento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TFcomportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8))
+                    .addComponent(Bcomportamiento))
+                .addGap(9, 9, 9)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(37, 37, 37))
         );
 
-        setBounds(0, 0, 895, 625);
+        setBounds(0, 0, 895, 640);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BcomportamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcomportamientoActionPerformed
@@ -516,12 +546,19 @@ public class dietaF extends javax.swing.JInternalFrame {
             Conexion con = new Conexion();
             DietaData dd = new DietaData(con);
             Dieta nueva = new Dieta();
+            String inicio = TFfechaInicial.getText(); //fecha inicio formato texto
+            String ffinal = TFfechaFinal.getText();// fecha final formato texto
+            LocalDate localDate1 = LocalDate.parse(inicio, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate localDate2 = LocalDate.parse(ffinal, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            System.out.println(localDate1);
+             System.out.println(localDate2);
             nueva.setPaciente(Integer.parseInt(TFidPaciente.getText()));
-            nueva.setFechaInicial(LocalDate.parse(TFfechaInicial.getText()));
-            nueva.setFechaFinal(LocalDate.parse(TFfechaFinal.getText()));
+            nueva.setFechaInicial(localDate1); //formato de fecha
+            nueva.setFechaFinal(localDate2);
             nueva.setPesoInicial(Float.parseFloat(TFpesoInicial.getText()));
             nueva.setPesoFinal(Float.parseFloat(TFpesoBuscado.getText()));
             dd.guardarDieta(nueva);
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(dietaF.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -620,7 +657,7 @@ public class dietaF extends javax.swing.JInternalFrame {
 
     private void TFidPacienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFidPacienteKeyTyped
         
-        if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+        if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de texto para id lo que se ingresa es una letra lanza la siguiente
                                                        exepcion*/
           
       getToolkit().beep();
@@ -637,7 +674,7 @@ public class dietaF extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TFidPacienteKeyTyped
 
     private void TFfechaInicialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFfechaInicialKeyTyped
-       if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+       if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de texto para id lo que se ingresa es una letra lanza la siguiente
                                                        exepcion*/
           
       getToolkit().beep();
@@ -651,7 +688,7 @@ public class dietaF extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TFfechaInicialKeyTyped
 
     private void TFfechaFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFfechaFinalKeyTyped
-      if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
+      if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de texto para id lo que se ingresa es una letra lanza la siguiente
                                                        exepcion*/
           
       getToolkit().beep();
@@ -800,6 +837,8 @@ public void borrarFilas2()
     private javax.swing.JTextField TFpesoBuscado;
     private javax.swing.JTextField TFpesoInicial;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
