@@ -315,7 +315,7 @@ public class principal extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
        escritorio.repaint();
-       dietaF formulario = new dietaF();
+       DietaComidaF formulario = new DietaComidaF();
        escritorio.add(formulario);
         formulario.setVisible(true);
         formulario.moveToFront();
