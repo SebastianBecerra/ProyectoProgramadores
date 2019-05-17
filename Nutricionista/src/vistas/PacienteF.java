@@ -78,12 +78,16 @@ public class PacienteF extends javax.swing.JInternalFrame {
         Lpaciente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lpaciente.setText("-PACIENTE-");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("ID");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("NOMBRE Y APELLIDO");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("DOCUMENTO DE IDENTIDAD");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("DIRECCION");
 
         TFid.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -116,6 +120,7 @@ public class PacienteF extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("CELULAR");
 
         TFcelular.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +166,6 @@ public class PacienteF extends javax.swing.JInternalFrame {
             JTresultado.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        Blimpiar.setBackground(java.awt.SystemColor.activeCaption);
         Blimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoLimpiar.png"))); // NOI18N
         Blimpiar.setText("Limpiar");
         Blimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +174,6 @@ public class PacienteF extends javax.swing.JInternalFrame {
             }
         });
 
-        Bborrar.setBackground(java.awt.SystemColor.activeCaption);
         Bborrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBorrar.png"))); // NOI18N
         Bborrar.setText("Borrar");
         Bborrar.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +182,6 @@ public class PacienteF extends javax.swing.JInternalFrame {
             }
         });
 
-        Bactualizar.setBackground(java.awt.SystemColor.activeCaption);
         Bactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoActualizar.png"))); // NOI18N
         Bactualizar.setText("Actualizar");
         Bactualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +190,6 @@ public class PacienteF extends javax.swing.JInternalFrame {
             }
         });
 
-        Bbuscar.setBackground(java.awt.SystemColor.activeCaption);
         Bbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bbuscar.setText("Buscar");
         Bbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +198,6 @@ public class PacienteF extends javax.swing.JInternalFrame {
             }
         });
 
-        Bguardar.setBackground(java.awt.SystemColor.activeCaption);
         Bguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoGuardar.png"))); // NOI18N
         Bguardar.setText("Guardar");
         Bguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +206,6 @@ public class PacienteF extends javax.swing.JInternalFrame {
             }
         });
 
-        BbuscarTodo.setBackground(java.awt.SystemColor.activeCaption);
         BbuscarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         BbuscarTodo.setText("BUSCAR TODO");
         BbuscarTodo.addActionListener(new java.awt.event.ActionListener() {
@@ -255,9 +254,9 @@ public class PacienteF extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Bbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(BbuscarTodo))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
