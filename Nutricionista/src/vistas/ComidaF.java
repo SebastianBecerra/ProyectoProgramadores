@@ -607,15 +607,14 @@ private DefaultTableModel modelo;
     }//GEN-LAST:event_TFidKeyTyped
 
     private void TFnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFnombreKeyTyped
-      if(Character.isLetter(evt.getKeyChar())){ /*si en el campo de tecto para id lo que se ingresa es una letra lanza la siguiente
-                                                       exepcion*/
+      if(Character.isDigit(evt.getKeyChar())){ //si en el campo de texto nombre se ingresaa un numero lanza la siguiente exepcion
           
       getToolkit().beep();
       evt.consume();
-          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Numeros");
-      }
-      else{//caso contrario no hace nada 
+          JOptionPane.showMessageDialog(rootPane,"Ingrese Solo Letras");
       
+      }
+      else{ // caso contrario no hace nada
       
       }
     }//GEN-LAST:event_TFnombreKeyTyped
