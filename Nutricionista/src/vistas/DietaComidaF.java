@@ -114,6 +114,7 @@ private ComidaData cd;
             }
         });
 
+        BsumaCalorias.setBackground(java.awt.SystemColor.activeCaption);
         BsumaCalorias.setText("Sumar Calorias de la Dieta");
         BsumaCalorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

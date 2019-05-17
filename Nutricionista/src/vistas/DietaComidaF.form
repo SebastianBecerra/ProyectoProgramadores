@@ -201,6 +201,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="BsumaCalorias">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="d1" green="b4" id="T&#xed;tulo Activo" palette="2" red="99" type="palette"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sumar Calorias de la Dieta"/>
       </Properties>
       <Events>
