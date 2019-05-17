@@ -242,7 +242,7 @@ public class principal extends javax.swing.JFrame {
        dietaF formulario = new dietaF();
        escritorio.add(formulario);
         formulario.setVisible(true);
-        formulario.moveToFront();
+        formulario.moveToFront(); // llevarlo al frente
        
     }//GEN-LAST:event_BdietaActionPerformed
 

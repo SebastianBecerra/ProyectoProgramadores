@@ -145,9 +145,9 @@ private DefaultTableModel modelo;
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Detalles:");
 
-        BguardarC.setBackground(java.awt.SystemColor.activeCaption);
         BguardarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoGuardar.png"))); // NOI18N
         BguardarC.setText("Guardar");
+        BguardarC.setToolTipText("Guardar Comida en la base de datos");
         BguardarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BguardarCActionPerformed(evt);
@@ -159,27 +159,27 @@ private DefaultTableModel modelo;
             }
         });
 
-        Bbuscar.setBackground(java.awt.SystemColor.activeCaption);
         Bbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bbuscar.setText("Buscar");
+        Bbuscar.setToolTipText("Buscar Comida por ID");
         Bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarActionPerformed(evt);
             }
         });
 
-        Bbuscartodo.setBackground(java.awt.SystemColor.activeCaption);
         Bbuscartodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bbuscartodo.setText("Buscar Todo");
+        Bbuscartodo.setToolTipText("Mostrar todas las Comidas de la base de datos");
         Bbuscartodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscartodoActionPerformed(evt);
             }
         });
 
-        Bborrar.setBackground(java.awt.SystemColor.activeCaption);
         Bborrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBorrar.png"))); // NOI18N
         Bborrar.setText("Borrar");
+        Bborrar.setToolTipText("Borar comida de la base de datos");
         Bborrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BborrarActionPerformed(evt);
@@ -191,9 +191,9 @@ private DefaultTableModel modelo;
             }
         });
 
-        Bactualizar.setBackground(java.awt.SystemColor.activeCaption);
         Bactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoActualizar.png"))); // NOI18N
         Bactualizar.setText("Actualizar");
+        Bactualizar.setToolTipText("Actualizar datos de una comida en la base de datos");
         Bactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BactualizarActionPerformed(evt);
@@ -232,9 +232,9 @@ private DefaultTableModel modelo;
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("ID:");
 
-        Blimpiar.setBackground(java.awt.SystemColor.activeCaption);
         Blimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoLimpiar.png"))); // NOI18N
         Blimpiar.setText("Limpiar");
+        Blimpiar.setToolTipText("Limpiar campos");
         Blimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BlimpiarActionPerformed(evt);
@@ -255,9 +255,9 @@ private DefaultTableModel modelo;
             }
         });
 
-        BbuscarAccion.setBackground(java.awt.SystemColor.activeCaption);
         BbuscarAccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         BbuscarAccion.setText("BUSCAR");
+        BbuscarAccion.setToolTipText("Nuscar Comidas con calorias menores");
         BbuscarAccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarAccionActionPerformed(evt);
@@ -347,7 +347,7 @@ private DefaultTableModel modelo;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Batras)))

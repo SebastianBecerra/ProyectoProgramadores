@@ -287,6 +287,7 @@
           <Image iconType="3" name="/Imagenes/iconoLimpiar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Limpiar todos los campos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BlimpiarActionPerformed"/>
@@ -301,6 +302,7 @@
           <Image iconType="3" name="/Imagenes/iconoBorrar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Borrar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Borrar Paciente en la Base de Datos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BborrarActionPerformed"/>
@@ -315,6 +317,7 @@
           <Image iconType="3" name="/Imagenes/iconoActualizar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Actualizar datos de un paciente en la Base de Datos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BactualizarActionPerformed"/>
@@ -329,6 +332,7 @@
           <Image iconType="3" name="/Imagenes/iconoBuscar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Buscar paciente por ID"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BbuscarActionPerformed"/>
@@ -343,6 +347,7 @@
           <Image iconType="3" name="/Imagenes/iconoGuardar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Guardar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Guardar Paciente en la Base de Datos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BguardarActionPerformed"/>
@@ -357,6 +362,7 @@
           <Image iconType="3" name="/Imagenes/iconoBuscar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="BUSCAR TODO"/>
+        <Property name="toolTipText" type="java.lang.String" value="Mostrar todos los Pacientes en la base de datos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BbuscarTodoActionPerformed"/>

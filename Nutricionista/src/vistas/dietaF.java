@@ -26,8 +26,8 @@ import nutricionista.modelos.PacienteData;
 
 public class dietaF extends javax.swing.JInternalFrame {
 
-     private DefaultTableModel modelo;
-     private DefaultTableModel modelo2;
+     private DefaultTableModel modelo; //  modelos para las tablas a utilizar
+     private DefaultTableModel modelo2;//
 
      private boolean aux  ;   // 
      private PacienteData pd ;
@@ -165,33 +165,34 @@ public class dietaF extends javax.swing.JInternalFrame {
 
         Bbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bbuscar.setText("Buscar");
+        Bbuscar.setToolTipText("Buscar dieta por id de paciente");
         Bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarActionPerformed(evt);
             }
         });
 
-        Bactualizar.setBackground(java.awt.SystemColor.activeCaption);
         Bactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoActualizar.png"))); // NOI18N
         Bactualizar.setText("Actualizar");
+        Bactualizar.setToolTipText("Actualizar los datos de una dieta de la base de datos");
         Bactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BactualizarActionPerformed(evt);
             }
         });
 
-        Bborrar.setBackground(java.awt.SystemColor.activeCaption);
         Bborrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBorrar.png"))); // NOI18N
         Bborrar.setText("Borrar");
+        Bborrar.setToolTipText("Borrar Dieta de la base de datos");
         Bborrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BborrarActionPerformed(evt);
             }
         });
 
-        Bguardar.setBackground(java.awt.SystemColor.activeCaption);
         Bguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoGuardar.png"))); // NOI18N
         Bguardar.setText("Guardar");
+        Bguardar.setToolTipText("Guardar dieta en la base de datos");
         Bguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BguardarActionPerformed(evt);
@@ -200,6 +201,7 @@ public class dietaF extends javax.swing.JInternalFrame {
 
         BbuscarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         BbuscarTodo.setText("BuscarTodo");
+        BbuscarTodo.setToolTipText("Mostrar todas las dietas de la base de datos");
         BbuscarTodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarTodoActionPerformed(evt);
@@ -244,16 +246,15 @@ public class dietaF extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("ID Paciente:");
 
-        Blimpiar.setBackground(java.awt.SystemColor.activeCaption);
         Blimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoLimpiar.png"))); // NOI18N
         Blimpiar.setText("Limpiar");
+        Blimpiar.setToolTipText("Limpiar todos los campos");
         Blimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BlimpiarActionPerformed(evt);
             }
         });
 
-        Batras.setBackground(java.awt.SystemColor.window);
         Batras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoAtras.png"))); // NOI18N
         Batras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,7 +276,6 @@ public class dietaF extends javax.swing.JInternalFrame {
             }
         });
 
-        Bcomportamiento.setBackground(java.awt.SystemColor.activeCaption);
         Bcomportamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bcomportamiento.setText("BUSCAR");
         Bcomportamiento.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +287,6 @@ public class dietaF extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
         jLabel9.setText("-Dieta-");
 
-        JTresultadosPaciente.setBackground(java.awt.SystemColor.inactiveCaption);
         JTresultadosPaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -315,10 +314,9 @@ public class dietaF extends javax.swing.JInternalFrame {
             JTresultadosPaciente.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jSeparator1.setBackground(java.awt.SystemColor.activeCaptionText);
-        jSeparator1.setForeground(java.awt.SystemColor.activeCaptionText);
         jSeparator1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
 
+        CBid.setToolTipText("Seleccionar Paciente");
         CBid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBidActionPerformed(evt);
@@ -501,19 +499,20 @@ public class dietaF extends javax.swing.JInternalFrame {
 
     private void BlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlimpiarActionPerformed
         TFidDieta.setText(null);
-        TFidPaciente.setText(null);
+        TFidPaciente.setText(null);                  // limpio los TF y tambien las tablas
         TFfechaInicial.setText(null);
-        TFfechaFinal.setText(null);
+        TFfechaFinal.setText(null);              
         TFpesoInicial.setText(null);
         TFpesoBuscado.setText(null);
         borrarFilas();
+        borrarFilas2();
     }//GEN-LAST:event_BlimpiarActionPerformed
 
     private void JTresultadosDietaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTresultadosDietaMouseClicked
         int index = JTresultadosDieta.getSelectedRow();
         TableModel model = JTresultadosDieta.getModel();
         String value1 = model.getValueAt(index, 0).toString();
-        String value2 = model.getValueAt(index, 1).toString();
+        String value2 = model.getValueAt(index, 1).toString();  // llevo los datos de la tabla a los TF uno a la vez seleccionando a travez de un indice
         String value3 = model.getValueAt(index, 2).toString();
         String value4 = model.getValueAt(index, 3).toString();
         String value5 = model.getValueAt(index, 4).toString();
@@ -571,9 +570,9 @@ public class dietaF extends javax.swing.JInternalFrame {
             DietaComidaData dc = new DietaComidaData(con);
             List<DietaComidaPacienteComida> DCD = null;
             DCD = dc.buscarDietaComidaPorIdDieta(Integer.parseInt(TFidDieta.getText()));
-            if(DCD != null)
+            if(DCD != null)                // checkeo que en la tabla Dieta Comida no haya una dieta guardada con el mismo id en la Tabla DietaComida, si la hay borrarla antes para poder borrar la dienta en la tabla dieta
             {
-                dc.borrarDietaComida(Integer.parseInt(TFidDieta.getText()));
+                dc.borrarDietaComida(Integer.parseInt(TFidDieta.getText()));            
                 dd.borrarDieta2(Integer.parseInt(TFidDieta.getText()));
             }
             else
@@ -591,12 +590,12 @@ public class dietaF extends javax.swing.JInternalFrame {
             Conexion con = new Conexion();
             DietaData dd = new DietaData(con);
             Dieta nueva = new Dieta();
-            nueva.setId(Integer.parseInt(TFidPaciente.getText()));
-            nueva.setPaciente(Integer.parseInt(TFidPaciente.getText()));
-            nueva.setFechaInicial(LocalDate.parse(TFfechaInicial.getText()));
-            nueva.setFechaFinal(LocalDate.parse(TFfechaFinal.getText()));
-            nueva.setPesoInicial(Float.parseFloat(TFpesoInicial.getText()));
-            nueva.setPesoFinal(Float.parseFloat(TFpesoBuscado.getText()));
+            nueva.setId(Integer.parseInt(TFidPaciente.getText()));                //     
+            nueva.setPaciente(Integer.parseInt(TFidPaciente.getText()));            //
+            nueva.setFechaInicial(LocalDate.parse(TFfechaInicial.getText()));       //     almaceno todos los TF en una nueva dieta
+            nueva.setFechaFinal(LocalDate.parse(TFfechaFinal.getText()));           //    y luega la actualizo
+            nueva.setPesoInicial(Float.parseFloat(TFpesoInicial.getText()));        //
+            nueva.setPesoFinal(Float.parseFloat(TFpesoBuscado.getText()));          //
 
             dd.actualizarDieta(nueva);
         } catch (ClassNotFoundException ex) {
@@ -606,7 +605,7 @@ public class dietaF extends javax.swing.JInternalFrame {
 
     private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
         try {
-            borrarFilas();
+            borrarFilas(); //refrescar la tabla a 0
             Conexion con = new Conexion();
             DietaData dd = new DietaData(con);
             Dieta nueva = new Dieta();
@@ -753,7 +752,7 @@ public class dietaF extends javax.swing.JInternalFrame {
        }
       else
       {
-           TFidPaciente.setText(null);
+           TFidPaciente.setText(null);  // dejarlo vacio al no seleccionar nada
       }
       
      
@@ -780,30 +779,30 @@ public void armarCabezeraTabla()
          JTresultadosDieta.setDefaultEditor(col_class, null);
          
     }
-public void armarCabezaTabla2()
+public void armarCabezaTabla2() // formar la segunda tabla
 {
         ArrayList<Object> columnas = new ArrayList<Object>();
       
         
         columnas.add("idPaciente");
         columnas.add("nombre");
-        columnas.add("dni");
+        columnas.add("dni");             // nombre de las cabeceras
         columnas.add("domicilio");
         columnas.add("celular");
         
          for(Object it:columnas)
          {
-            modelo2.addColumn(it);
+            modelo2.addColumn(it);   //agregarlas al modelo
             
          }
-         JTresultadosPaciente.setModel(modelo2);
+         JTresultadosPaciente.setModel(modelo2);  // asignar el modelo a la tabla
          Class<?> col_class = JTresultadosPaciente.getColumnClass(4);
          JTresultadosPaciente.setDefaultEditor(col_class, null);
 
 
 
 }
-public void borrarFilas()
+public void borrarFilas()  // borrar filas para la primer tabla
      {
      int a = modelo.getRowCount()-1;
       for(int i = a;i>=0;i--){
@@ -812,7 +811,7 @@ public void borrarFilas()
     }
 public void borrarFilas2()
      {
-     int a = modelo2.getRowCount()-1;
+     int a = modelo2.getRowCount()-1; // borrar filas para la segunda tabla
       for(int i = a;i>=0;i--){
       modelo2.removeRow(i);
       }

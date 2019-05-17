@@ -131,7 +131,7 @@
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -220,6 +220,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Seleccionar Comida"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CBcomidasActionPerformed"/>
@@ -257,6 +258,7 @@
           <Color blue="d1" green="b4" id="T&#xed;tulo Activo" palette="2" red="99" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Sumar Calorias de la Dieta"/>
+        <Property name="toolTipText" type="java.lang.String" value="Sumar calorias de la dieta"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BsumaCaloriasActionPerformed"/>
@@ -271,6 +273,7 @@
           <Image iconType="3" name="/Imagenes/iconoAgregarComida.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Agregar Comida"/>
+        <Property name="toolTipText" type="java.lang.String" value="Agregar Comida a la dieta"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BagregarActionPerformed"/>
@@ -353,6 +356,7 @@
           <Image iconType="3" name="/Imagenes/iconoBuscar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="BUSCAR"/>
+        <Property name="toolTipText" type="java.lang.String" value="Buscar una dieta por dni de Paciente"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BbuscarActionPerformed"/>
@@ -389,6 +393,7 @@
           <Image iconType="3" name="/Imagenes/iconoBorrar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Borrar Comida"/>
+        <Property name="toolTipText" type="java.lang.String" value="Borrar Comida de la dieta"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BborrarActionPerformed"/>

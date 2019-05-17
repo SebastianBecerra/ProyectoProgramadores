@@ -164,7 +164,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel6" pref="36" max="32767" attributes="0"/>
+                  <Component id="jLabel6" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="Batras" min="-2" max="-2" attributes="0"/>
@@ -266,6 +266,7 @@
           <Image iconType="3" name="/Imagenes/iconoGuardar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Guardar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Guardar Comida en la base de datos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BguardarCActionPerformed"/>
@@ -281,6 +282,7 @@
           <Image iconType="3" name="/Imagenes/iconoBuscar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Buscar Comida por ID"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BbuscarActionPerformed"/>
@@ -295,6 +297,7 @@
           <Image iconType="3" name="/Imagenes/iconoBuscar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar Todo"/>
+        <Property name="toolTipText" type="java.lang.String" value="Mostrar todas las Comidas de la base de datos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BbuscartodoActionPerformed"/>
@@ -309,6 +312,7 @@
           <Image iconType="3" name="/Imagenes/iconoBorrar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Borrar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Borar comida de la base de datos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BborrarActionPerformed"/>
@@ -324,6 +328,7 @@
           <Image iconType="3" name="/Imagenes/iconoActualizar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Actualizar datos de una comida en la base de datos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BactualizarActionPerformed"/>
@@ -376,6 +381,7 @@
           <Image iconType="3" name="/Imagenes/iconoLimpiar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Limpiar campos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BlimpiarActionPerformed"/>
@@ -404,6 +410,7 @@
           <Image iconType="3" name="/Imagenes/iconoBuscar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="BUSCAR"/>
+        <Property name="toolTipText" type="java.lang.String" value="Nuscar Comidas con calorias menores"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BbuscarAccionActionPerformed"/>

@@ -166,54 +166,54 @@ public class PacienteF extends javax.swing.JInternalFrame {
             JTresultado.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        Blimpiar.setBackground(java.awt.SystemColor.activeCaption);
         Blimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoLimpiar.png"))); // NOI18N
         Blimpiar.setText("Limpiar");
+        Blimpiar.setToolTipText("Limpiar todos los campos");
         Blimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BlimpiarActionPerformed(evt);
             }
         });
 
-        Bborrar.setBackground(java.awt.SystemColor.activeCaption);
         Bborrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBorrar.png"))); // NOI18N
         Bborrar.setText("Borrar");
+        Bborrar.setToolTipText("Borrar Paciente en la Base de Datos");
         Bborrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BborrarActionPerformed(evt);
             }
         });
 
-        Bactualizar.setBackground(java.awt.SystemColor.activeCaption);
         Bactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoActualizar.png"))); // NOI18N
         Bactualizar.setText("Actualizar");
+        Bactualizar.setToolTipText("Actualizar datos de un paciente en la Base de Datos");
         Bactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BactualizarActionPerformed(evt);
             }
         });
 
-        Bbuscar.setBackground(java.awt.SystemColor.activeCaption);
         Bbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bbuscar.setText("Buscar");
+        Bbuscar.setToolTipText("Buscar paciente por ID");
         Bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarActionPerformed(evt);
             }
         });
 
-        Bguardar.setBackground(java.awt.SystemColor.activeCaption);
         Bguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoGuardar.png"))); // NOI18N
         Bguardar.setText("Guardar");
+        Bguardar.setToolTipText("Guardar Paciente en la Base de Datos");
         Bguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BguardarActionPerformed(evt);
             }
         });
 
-        BbuscarTodo.setBackground(java.awt.SystemColor.activeCaption);
         BbuscarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         BbuscarTodo.setText("BUSCAR TODO");
+        BbuscarTodo.setToolTipText("Mostrar todos los Pacientes en la base de datos");
         BbuscarTodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarTodoActionPerformed(evt);

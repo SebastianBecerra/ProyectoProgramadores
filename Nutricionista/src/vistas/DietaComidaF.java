@@ -100,6 +100,7 @@ private ComidaData cd;
         setPreferredSize(new java.awt.Dimension(895, 625));
 
         CBcomidas.setMaximumRowCount(100);
+        CBcomidas.setToolTipText("Seleccionar Comida");
         CBcomidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBcomidasActionPerformed(evt);
@@ -123,17 +124,17 @@ private ComidaData cd;
             }
         });
 
-        BsumaCalorias.setBackground(java.awt.SystemColor.activeCaption);
         BsumaCalorias.setText("Sumar Calorias de la Dieta");
+        BsumaCalorias.setToolTipText("Sumar calorias de la dieta");
         BsumaCalorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BsumaCaloriasActionPerformed(evt);
             }
         });
 
-        Bagregar.setBackground(java.awt.SystemColor.activeCaption);
         Bagregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoAgregarComida.png"))); // NOI18N
         Bagregar.setText("Agregar Comida");
+        Bagregar.setToolTipText("Agregar Comida a la dieta");
         Bagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BagregarActionPerformed(evt);
@@ -173,9 +174,9 @@ private ComidaData cd;
         });
         jScrollPane1.setViewportView(JTresutadosDietaComida);
 
-        Bbuscar.setBackground(java.awt.SystemColor.activeCaption);
         Bbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBuscar.png"))); // NOI18N
         Bbuscar.setText("BUSCAR");
+        Bbuscar.setToolTipText("Buscar una dieta por dni de Paciente");
         Bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarActionPerformed(evt);
@@ -193,9 +194,9 @@ private ComidaData cd;
             }
         });
 
-        Bborrar.setBackground(java.awt.SystemColor.activeCaption);
         Bborrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoBorrar.png"))); // NOI18N
         Bborrar.setText("Borrar Comida");
+        Bborrar.setToolTipText("Borrar Comida de la dieta");
         Bborrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BborrarActionPerformed(evt);
@@ -336,7 +337,7 @@ private ComidaData cd;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
